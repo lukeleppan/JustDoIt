@@ -149,8 +149,8 @@ public class InitialForm extends javax.swing.JFrame {
     }//GEN-LAST:event_SignUpButtonActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        RegistrationForm regForm = new RegistrationForm();
-        regForm.setVisible(true);
+        LoginForm logForm = new LoginForm();
+        logForm.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_jButton2ActionPerformed
 

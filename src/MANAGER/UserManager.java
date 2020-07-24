@@ -3,12 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package DATA;
+package MANAGER;
 
 /**
  *
  * @author Luke Leppan
  */
-public class ProjectManager {
+public class UserManager {
 
 }
