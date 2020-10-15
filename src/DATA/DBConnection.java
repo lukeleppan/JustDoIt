@@ -7,28 +7,23 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.swing.JOptionPane;
 
 public class DBConnection {
 
     private Connection conn;
     Statement stmt;
 
-    public void DBConnectionqq() throws ClassNotFoundException, SQLException {
+    public DBConnection() {
 
-        String dbURL = "jdbc:ucanaccess://JustDoItDatabase.accdb";
+        try {
+            String dbURL = "jdbc:ucanaccess://JustDoItDatabase.accdb";
+            conn = DriverManager.getConnection(dbURL, "", "");
+            stmt = conn.createStatement();
 
-        conn = DriverManager.getConnection(dbURL, "", "");
-        stmt = conn.createStatement();
+        } catch (SQLException ex) {
+            Logger.getLogger(DBConnection.class.getName()).log(Level.SEVERE, null, ex);
 
-    }
-
-    public DBConnection() throws ClassNotFoundException, SQLException {
-
-        String dbURL = "jdbc:ucanaccess://JustDoItDatabase.mdb";
-
-        conn = DriverManager.getConnection(dbURL, "", "");
-        stmt = conn.createStatement();
+        }
 
     }
 

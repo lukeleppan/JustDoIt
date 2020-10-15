@@ -1,14 +1,14 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package MANAGER;
 
-/**
- *
- * @author Luke Leppan
- */
+import DATA.DBConnection;
+import DATA.User;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
+
 public class UserManager {
+
+    DBConnection objDBCon = new DBConnection();
 
 }
