@@ -1,7 +1,10 @@
 package DATA;
 
+import MANAGER.UserManager;
 import java.util.Arrays;
 import java.util.Date;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class Validator {
 
@@ -68,7 +71,10 @@ public class Validator {
 	public boolean validateUsername() {
 		boolean valid = true;
 
-		if (username.equals("") || !(username.matches(" ^(?![_.])(?!.*[_.]{2})[a-zA-Z0-9._]+(?<![_.])$"))) {
+		Pattern usernamePatten = Pattern.compile("^(?=[a-zA-Z0-9._]{0,255}$)(?!.*[_.]{2})[^_.].*[^_.]$");
+		Matcher usernameMatcher = usernamePatten.matcher(username);
+
+		if (!usernameMatcher.find()) {
 			valid = false;
 		}
 
@@ -88,7 +94,10 @@ public class Validator {
 	public boolean validateEmail() {
 		boolean valid = true;
 
-		if (email.equals("") || !(email.matches("(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*|\"(?:[\\x01-\\x08\\x0b\\x0c\\x0e-\\x1f\\x21\\x23-\\x5b\\x5d-\\x7f]|\\\\[\\x01-\\x09\\x0b\\x0c\\x0e-\\x7f])*\")@(?:(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?|\\[(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?|[a-z0-9-]*[a-z0-9]:(?:[\\x01-\\x08\\x0b\\x0c\\x0e-\\x1f\\x21-\\x5a\\x53-\\x7f]|\\\\[\\x01-\\x09\\x0b\\x0c\\x0e-\\x7f])+)\\])"))) {
+		Pattern emailPatten = Pattern.compile("(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*|\"(?:[\\x01-\\x08\\x0b\\x0c\\x0e-\\x1f\\x21\\x23-\\x5b\\x5d-\\x7f]|\\\\[\\x01-\\x09\\x0b\\x0c\\x0e-\\x7f])*\")@(?:(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?|\\[(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?|[a-z0-9-]*[a-z0-9]:(?:[\\x01-\\x08\\x0b\\x0c\\x0e-\\x1f\\x21-\\x5a\\x53-\\x7f]|\\\\[\\x01-\\x09\\x0b\\x0c\\x0e-\\x7f])+)\\])");
+		Matcher emailMatcher = emailPatten.matcher(username);
+
+		if (email.equals("") || !(emailMatcher.find())) {
 			valid = false;
 		}
 
@@ -148,6 +157,17 @@ public class Validator {
 		boolean valid = true;
 
 		if (passScore < 3) {
+			valid = false;
+		}
+
+		return valid;
+	}
+
+	public boolean validateUserAvailable() {
+		boolean valid = true;
+
+		UserManager userManager = new UserManager();
+		if (userManager.CheckForUser(username) == true) {
 			valid = false;
 		}
 

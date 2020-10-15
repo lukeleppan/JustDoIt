@@ -608,6 +608,8 @@ public class MainForm extends javax.swing.JFrame {
 			errorText = "Password is too short. Must be greater than 8 characters.";
 		} else if (!validator.validatePasswordStrength()) {
 			errorText = "Your password is not strong enough. Try adding numbers or special charaters.";
+		} else if (!validator.validateUserAvailable()) {
+			errorText = "Username is already taken.";
 		}
 
 		ErrorTextRegPNL.setText(errorText);
