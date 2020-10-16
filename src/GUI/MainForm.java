@@ -6,8 +6,12 @@
 package GUI;
 
 import DATA.Validator;
+import MANAGER.HashPassword;
 import java.awt.CardLayout;
+import java.security.NoSuchAlgorithmException;
 import java.util.Date;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -562,6 +566,7 @@ public class MainForm extends javax.swing.JFrame {
         }//GEN-LAST:event_SignUpInsteadButtonLogPNLActionPerformed
 
         private void SignUpButtonRegPNLActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SignUpButtonRegPNLActionPerformed
+
 		String firstname = FirstNameField.getText();
 		String surname = SurnameField.getText();
 		String username = UsernameField.getText();
@@ -578,6 +583,13 @@ public class MainForm extends javax.swing.JFrame {
 		}
 
 		int passScore = calcPassScore(passwordStr);
+
+		HashPassword hash = new HashPassword();
+		try {
+			System.out.println(hash.hashPassword(password));
+		} catch (NoSuchAlgorithmException ex) {
+			Logger.getLogger(MainForm.class.getName()).log(Level.SEVERE, null, ex);
+		}
 
 		Validator validator = new Validator(firstname, surname, username, email, DOB, password, repeatPassword, passScore);
 		String errorText = "";
