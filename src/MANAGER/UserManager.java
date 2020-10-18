@@ -10,24 +10,30 @@ import java.util.logging.Logger;
 
 public class UserManager {
 
-	private DBConnection objDBCon;
-	private User user;
-	private UserCreds userCreds;
+  private DBConnection DBCon = new DBConnection();
+  private User user;
+  private UserCreds userCreds;
 
-	public boolean CheckForUser(String username) {
-		boolean exists = false;
+  public boolean CheckForUser(String username) {
+    boolean exists = false;
 
-		try {
-			ResultSet rs = objDBCon.query("SELECT * FROM UserCreds WHERE Username = '" + username + "'");
+    System.out.println("heyy");
 
-			if (rs.getString(1).equals(username)) {
-				exists = true;
-			}
-		} catch (SQLException ex) {
-			Logger.getLogger(UserManager.class.getName()).log(Level.SEVERE, null, ex);
-		}
+    try {
+      ResultSet rs = DBCon.query("SELECT * FROM UserCreds WHERE Username = '" + username + "';");
 
-		return exists;
-	}
+      System.out.println(rs.toString());
+
+      System.out.println(rs.getString(1));
+
+      if (rs.getString(1).equals(username)) {
+        exists = true;
+      }
+    } catch (SQLException ex) {
+      Logger.getLogger(UserManager.class.getName()).log(Level.SEVERE, null, ex);
+    }
+
+    return exists;
+  }
 
 }
