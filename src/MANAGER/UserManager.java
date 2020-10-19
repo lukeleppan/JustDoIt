@@ -5,6 +5,8 @@ import DATA.User;
 import DATA.UserCreds;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -17,23 +19,38 @@ public class UserManager {
   public boolean CheckForUser(String username) {
     boolean exists = false;
 
-    System.out.println("heyy");
-
     try {
-      ResultSet rs = DBCon.query("SELECT * FROM UserCreds WHERE Username = '" + username + "';");
+      List<UserCreds> userCredsShareableList = new ArrayList();
 
-      System.out.println(rs.toString());
+      ResultSet rs = DBCon.query("SELECT * FROM tblUserCreds");
 
-      System.out.println(rs.getString(1));
+      while (rs.next()) {
+        UserCreds userCred = new UserCreds(
+                rs.getInt("UserCredID"),
+                rs.getString("Username"),
+                rs.getString("Password")
+        );
+        userCredsShareableList.add(userCred);
+      }
 
-      if (rs.getString(1).equals(username)) {
-        exists = true;
+      rs.close();
+
+      for (int i = 0; i < userCredsShareableList.size(); i++) {
+        if (userCredsShareableList.get(i).getUsername().equals(username)) {
+          exists = true;
+        }
       }
     } catch (SQLException ex) {
       Logger.getLogger(UserManager.class.getName()).log(Level.SEVERE, null, ex);
     }
 
     return exists;
+  }
+
+  public boolean RegisterUser(User user, UserCreds userCreds) {
+    boolean success = false;
+
+    return success;
   }
 
 }

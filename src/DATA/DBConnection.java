@@ -28,7 +28,6 @@ public class DBConnection {
   }
 
   public ResultSet query(String sql) throws SQLException {
-    System.out.println("test");
     ResultSet result = stmt.executeQuery(sql);
     return result;
 

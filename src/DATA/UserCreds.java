@@ -2,28 +2,38 @@ package DATA;
 
 public class UserCreds {
 
-	private String username;
-	private String password;
+  private int UserCredID;
+  private String username;
+  private String password;
 
-	public UserCreds(String username, String password) {
-		this.username = username;
-		this.password = password;
-	}
+  public UserCreds(int UserCredID, String username, String password) {
+    this.UserCredID = UserCredID;
+    this.username = username;
+    this.password = password;
+  }
 
-	public String getUsername() {
-		return username;
-	}
+  public int getUserCredID() {
+    return UserCredID;
+  }
 
-	public String getPassword() {
-		return password;
-	}
+  public String getUsername() {
+    return username;
+  }
 
-	public void setUsername(String username) {
-		this.username = username;
-	}
+  public String getPassword() {
+    return password;
+  }
 
-	public void setPassword(String password) {
-		this.password = password;
-	}
+  public void setUserCredID(int UserCredID) {
+    this.UserCredID = UserCredID;
+  }
+
+  public void setUsername(String username) {
+    this.username = username;
+  }
+
+  public void setPassword(String password) {
+    this.password = password;
+  }
 
 }

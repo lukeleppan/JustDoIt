@@ -591,8 +591,6 @@ public class MainForm extends javax.swing.JFrame {
 
     UserManager userManager = new UserManager();
 
-    System.out.println(userManager.CheckForUser(username));
-
     if (!validator.validateFirstname()) {
       errorText = "Please Enter your First Name.";
     } else if (!validator.validateFirstnameLength()) {
@@ -619,8 +617,7 @@ public class MainForm extends javax.swing.JFrame {
       errorText = "Password is too short. Must be greater than 8 characters.";
     } else if (!validator.validatePasswordStrength()) {
       errorText = "Your password is not strong enough. Try adding numbers or special charaters.";
-    } else if (!userManager.CheckForUser(username)) {
-      System.out.println("heyy");
+    } else if (userManager.CheckForUser(username)) {
       errorText = "Username is already taken.";
     }
 
