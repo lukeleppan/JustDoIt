@@ -43,8 +43,8 @@ public class DBConnection {
 		ResultSet result = stmt.getGeneratedKeys();
 		if (result.next()) {
 			id = result.getInt(sql);
-
 		}
+		System.out.println(id);
 		return id;
 	}
 

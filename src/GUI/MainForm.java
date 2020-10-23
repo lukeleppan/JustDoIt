@@ -13,6 +13,7 @@ import java.awt.CardLayout;
 import java.util.Date;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -24,6 +25,9 @@ public class MainForm extends javax.swing.JFrame {
 	 * Creates new form MainForm
 	 */
 	CardLayout cardLayout;
+
+	public User currentUser;
+	public String currentUsername;
 
 	public MainForm() {
 		initComponents();
@@ -264,7 +268,7 @@ public class MainForm extends javax.swing.JFrame {
     UsernameText7.setLabelFor(DOBPicker);
     UsernameText7.setText("Date Of Birth");
 
-    DOBPicker.setNextFocusableComponent(PasswordFieldRegPNL);
+    DOBPicker.setNextFocusableComponent(PasswordFieldRegPNL.getNextFocusableComponent());
 
     PasswordFieldRegPNL.setNextFocusableComponent(RepeatedPasswordField);
     PasswordFieldRegPNL.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -558,7 +562,21 @@ public class MainForm extends javax.swing.JFrame {
     }//GEN-LAST:event_SignInButtonPNLActionPerformed
 
         private void SignInButtonLogPNLActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SignInButtonLogPNLActionPerformed
-		// TODO
+		UserManager userManager = new UserManager();
+		if (userManager.LoginUser(UsernameField.getText(), new String(PasswordField.getPassword()))) {
+			currentUsername = UsernameField.getText();
+			currentUser = userManager.getUser(currentUsername);
+			cardLayout.show(MainPanel, "ProjectView");
+			JOptionPane.showMessageDialog(this,
+							"✔ Successful Login"
+							+ "\nWelcome " + currentUser.getUserFirstName()
+			);
+		} else {
+			JOptionPane.showMessageDialog(this,
+							"❌ Username or Password is Incorrect"
+							+ "\nPlease Try Again"
+			);
+		}
         }//GEN-LAST:event_SignInButtonLogPNLActionPerformed
 
         private void SignUpInsteadButtonLogPNLActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SignUpInsteadButtonLogPNLActionPerformed
@@ -620,8 +638,12 @@ public class MainForm extends javax.swing.JFrame {
 			errorText = "Your password is not strong enough. Try adding numbers or special charaters.";
 		} else if (userManager.CheckForUser(username)) {
 			errorText = "Username is already taken.";
-		} else {
-			userManager.RegisterUser(user, userCreds);
+		} else if (userManager.RegisterUser(user, userCreds)) {
+			cardLayout.show(MainPanel, "LoginPanel");
+			JOptionPane.showMessageDialog(this,
+							"Successfully Registered ✔"
+							+ "\nPlease Login"
+			);
 		}
 
 		ErrorTextRegPNL.setText(errorText);
