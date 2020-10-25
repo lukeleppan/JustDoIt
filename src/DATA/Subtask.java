@@ -9,6 +9,6 @@ package DATA;
  *
  * @author Luke Leppan
  */
-public class Subtasks {
+public class Subtask {
 
 }

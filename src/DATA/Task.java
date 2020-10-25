@@ -9,6 +9,6 @@ package DATA;
  *
  * @author Luke Leppan
  */
-public class Tasks {
+public class Task {
 
 }
