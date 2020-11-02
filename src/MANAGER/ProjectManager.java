@@ -28,6 +28,7 @@ public class ProjectManager {
         success = true;
       }
     } catch (SQLException ex) {
+      System.out.println("Something Went Wrong!");
       Logger.getLogger(ProjectManager.class.getName()).log(Level.SEVERE, null, ex);
     }
 
@@ -51,6 +52,7 @@ public class ProjectManager {
       rs.close();
 
     } catch (SQLException ex) {
+      System.out.println("Something Went Wrong!");
       Logger.getLogger(ProjectManager.class.getName()).log(Level.SEVERE, null, ex);
     }
 
@@ -68,6 +70,7 @@ public class ProjectManager {
         success = true;
       }
     } catch (SQLException ex) {
+      System.out.println("Something Went Wrong!");
       Logger.getLogger(ProjectManager.class.getName()).log(Level.SEVERE, null, ex);
     }
 

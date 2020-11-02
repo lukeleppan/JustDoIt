@@ -37,6 +37,7 @@ public class UserManager {
         }
       }
     } catch (SQLException ex) {
+      System.out.println("Something Went Wrong!");
       Logger.getLogger(UserManager.class.getName()).log(Level.SEVERE, null, ex);
     }
 
@@ -70,6 +71,7 @@ public class UserManager {
 
       rs.close();
     } catch (SQLException ex) {
+      System.out.println("Something Went Wrong!");
       Logger.getLogger(UserManager.class.getName()).log(Level.SEVERE, null, ex);
     }
     for (int i = 0; i < userCredsShareableList.size(); i++) {
@@ -93,6 +95,7 @@ public class UserManager {
       }
 
     } catch (SQLException ex) {
+      System.out.println("Something Went Wrong!");
       Logger.getLogger(UserManager.class.getName()).log(Level.SEVERE, null, ex);
     }
 
@@ -113,6 +116,7 @@ public class UserManager {
         userCredsShareableList.add(tempUserCred);
       }
     } catch (SQLException ex) {
+      System.out.println("Something Went Wrong!");
       Logger.getLogger(UserManager.class.getName()).log(Level.SEVERE, null, ex);
     }
 
@@ -145,6 +149,7 @@ public class UserManager {
         }
       }
     } catch (SQLException ex) {
+      System.out.println("Something Went Wrong!");
       Logger.getLogger(UserManager.class.getName()).log(Level.SEVERE, null, ex);
     }
 
@@ -161,6 +166,7 @@ public class UserManager {
         userShareableList.add(tempUser);
       }
     } catch (SQLException ex) {
+      System.out.println("Something Went Wrong!");
       Logger.getLogger(UserManager.class.getName()).log(Level.SEVERE, null, ex);
     }
 
@@ -186,6 +192,7 @@ public class UserManager {
     try {
       numCheck = DBCon.update("DELETE * FROM tblUserCreds WHERE Username = " + username);
     } catch (SQLException ex) {
+      System.out.println("Something Went Wrong!");
       Logger.getLogger(UserManager.class.getName()).log(Level.SEVERE, null, ex);
     }
 
