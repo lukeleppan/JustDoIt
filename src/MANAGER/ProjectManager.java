@@ -37,7 +37,7 @@ public class ProjectManager {
   public List<Project> GetUserProjects(User currentUser) {
     List<Project> userProjectList = new ArrayList();
 
-    try ( ResultSet rs = DBCon.query("SELECT * FROM tblUserCreds")) {
+    try (ResultSet rs = DBCon.query("SELECT * FROM tblProjects WHERE userID = " + currentUser.getUserID())) {
 
       while (rs.next()) {
         Project project = new Project(
@@ -55,5 +55,22 @@ public class ProjectManager {
     }
 
     return userProjectList;
+  }
+
+  public boolean DeleteProject(Project project) {
+    boolean success = false;
+
+    try {
+      if (DBCon.update(
+              "DELETE FROM tblProjects "
+              + "WHERE ProjectID = "
+              + project.getProjectID()) == 1) {
+        success = true;
+      }
+    } catch (SQLException ex) {
+      Logger.getLogger(ProjectManager.class.getName()).log(Level.SEVERE, null, ex);
+    }
+
+    return success;
   }
 }

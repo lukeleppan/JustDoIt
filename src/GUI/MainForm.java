@@ -1,30 +1,21 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package GUI;
 
+import DATA.Project;
 import DATA.User;
 import DATA.UserCreds;
 import MANAGER.ProjectManager;
 import MANAGER.UserManager;
 import MANAGER.Validator;
 import java.awt.CardLayout;
+import java.awt.Dimension;
 import java.util.Date;
+import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import javax.swing.JOptionPane;
 
-/**
- *
- * @author Luke Leppan
- */
 public class MainForm extends javax.swing.JFrame {
 
-  /**
-   * Creates new form MainForm
-   */
   CardLayout cardLayoutMain;
   CardLayout cardLayoutPV;
 
@@ -34,16 +25,37 @@ public class MainForm extends javax.swing.JFrame {
   public MainForm() {
     initComponents();
 
-    this.setLocationRelativeTo(null);
-    cardLayoutMain = (CardLayout) (MainPanel.getLayout());
-    cardLayoutPV = (CardLayout) (CardPV.getLayout());
+    this.setLocationRelativeTo(null); // Set to Center
+    cardLayoutMain = (CardLayout) (MainPanel.getLayout()); // Get Main card layout
+    cardLayoutPV = (CardLayout) (CardPV.getLayout());  // Get PV card layout
   }
 
-  private void refreshProjectView() {
+  private void refreshProjectView() {  //Loads Project Components for Project View
+    ProjectManager projectManager = new ProjectManager();
+    List<Project> projects = projectManager.GetUserProjects(currentUser);
+    Dimension preferredSize = new Dimension(818, 174 * projects.size() + 10);
+    ScrollViewPV.setPreferredSize(preferredSize);
+    ProjectScrollViewPV.getVerticalScrollBar().setUnitIncrement(16);
+    ProjectScrollViewPV.getVerticalScrollBar().setAutoscrolls(false);
 
+    for (int i = 0; i < projects.size(); i++) {
+      Project project = projects.get(i);
+      ProjectTile projectTile = new ProjectTile(project);
+
+      projectTile.setSize(395, 170);
+      projectTile.setLocation(140, 174 * i + 5);
+      projectTile.setVisible(true);
+
+      ScrollViewPV.add(projectTile);
+    }
   }
 
-  private int calcPassScore(String password) {
+  private void setAccountDetails() {  // Sets the current users details
+    AccountName.setText(currentUser.getUserFirstName() + " " + currentUser.getUserSurname());
+    AccountUsername.setText(currentUsername);
+  }
+
+  private int calcPassScore(String password) { // Calculates the password strength
     int score = 0;
 
     //Calc Score
@@ -99,6 +111,7 @@ public class MainForm extends javax.swing.JFrame {
 
     MainPanel = new javax.swing.JPanel();
     InitialPanel = new javax.swing.JPanel();
+    jPanel1 = new javax.swing.JPanel();
     InitTitlePNL = new javax.swing.JPanel();
     Welcome1Text = new javax.swing.JLabel();
     jLabel1 = new javax.swing.JLabel();
@@ -117,7 +130,6 @@ public class MainForm extends javax.swing.JFrame {
     FirstNameField = new javax.swing.JTextField();
     UsernameText6 = new javax.swing.JLabel();
     UsernameText7 = new javax.swing.JLabel();
-    DOBPicker = new org.jdesktop.swingx.JXDatePicker();
     PasswordFieldRegPNL = new javax.swing.JPasswordField();
     SignUpButtonRegPNL = new javax.swing.JButton();
     ErrorTextRegPNL = new javax.swing.JLabel();
@@ -126,6 +138,7 @@ public class MainForm extends javax.swing.JFrame {
     RepeatedPasswordField = new javax.swing.JPasswordField();
     PasswordStrength = new javax.swing.JProgressBar();
     PassStrengthText = new javax.swing.JLabel();
+    DOBPicker = new org.jdesktop.swingx.JXDatePicker();
     LoginPanel = new javax.swing.JPanel();
     LogPNL = new javax.swing.JPanel();
     SignInButtonLogPNL = new javax.swing.JButton();
@@ -136,12 +149,20 @@ public class MainForm extends javax.swing.JFrame {
     ErrorText = new javax.swing.JLabel();
     SignUpInsteadButtonLogPNL = new javax.swing.JButton();
     ProjectView = new javax.swing.JPanel();
+    MainSplit = new javax.swing.JSplitPane();
+    SidePane = new javax.swing.JPanel();
+    AccountPanel = new javax.swing.JPanel();
+    AccountName = new javax.swing.JLabel();
+    AccountUsername = new javax.swing.JLabel();
+    AccountSetButtons = new javax.swing.JButton();
+    AccountIcon = new javax.swing.JLabel();
     CardPV = new javax.swing.JPanel();
     ProjectViewCardPV = new javax.swing.JPanel();
     ProjectViewToolBarPV = new javax.swing.JPanel();
     NewProjectButtonPV = new javax.swing.JButton();
     RefreshButtonPV = new javax.swing.JButton();
     ProjectScrollViewPV = new javax.swing.JScrollPane();
+    ScrollViewPV = new javax.swing.JPanel();
     NewProjectViewPV = new javax.swing.JPanel();
     NewProjectDetailsPV = new javax.swing.JPanel();
     ProjectNameLabelNPPV = new javax.swing.JLabel();
@@ -154,6 +175,14 @@ public class MainForm extends javax.swing.JFrame {
     ToolBarNPPV = new javax.swing.JPanel();
     BackButton = new javax.swing.JButton();
     SeperatorNPPV = new javax.swing.JSeparator();
+    ProjectPage = new javax.swing.JPanel();
+    AccountSettingsPanel = new javax.swing.JPanel();
+    AccountSettingToolbar = new javax.swing.JPanel();
+    AccounSettingsBackButton = new javax.swing.JToggleButton();
+    jLabel2 = new javax.swing.JLabel();
+    jSeparator1 = new javax.swing.JSeparator();
+    jPanel2 = new javax.swing.JPanel();
+    DeleteAccountButton = new javax.swing.JButton();
     MenuBar = new javax.swing.JMenuBar();
     jMenu1 = new javax.swing.JMenu();
     jMenu2 = new javax.swing.JMenu();
@@ -178,9 +207,9 @@ public class MainForm extends javax.swing.JFrame {
       .addGroup(InitTitlePNLLayout.createSequentialGroup()
         .addContainerGap()
         .addComponent(Welcome1Text, javax.swing.GroupLayout.PREFERRED_SIZE, 204, javax.swing.GroupLayout.PREFERRED_SIZE)
-        .addContainerGap(94, Short.MAX_VALUE))
+        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
       .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, InitTitlePNLLayout.createSequentialGroup()
-        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        .addContainerGap(65, Short.MAX_VALUE)
         .addComponent(jLabel1)
         .addGap(47, 47, 47))
     );
@@ -220,7 +249,7 @@ public class MainForm extends javax.swing.JFrame {
       .addGroup(jPanel3Layout.createSequentialGroup()
         .addGap(52, 52, 52)
         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
-          .addComponent(SignUpButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+          .addComponent(SignUpButton, javax.swing.GroupLayout.DEFAULT_SIZE, 164, Short.MAX_VALUE)
           .addComponent(SignInButtonPNL, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         .addGap(73, 73, 73))
     );
@@ -233,27 +262,45 @@ public class MainForm extends javax.swing.JFrame {
         .addGap(0, 16, Short.MAX_VALUE))
     );
 
+    javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+    jPanel1.setLayout(jPanel1Layout);
+    jPanel1Layout.setHorizontalGroup(
+      jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+      .addGroup(jPanel1Layout.createSequentialGroup()
+        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+          .addGroup(jPanel1Layout.createSequentialGroup()
+            .addGap(83, 83, 83)
+            .addComponent(InitTitlePNL, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+          .addGroup(jPanel1Layout.createSequentialGroup()
+            .addGap(72, 72, 72)
+            .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+        .addContainerGap(31, Short.MAX_VALUE))
+    );
+    jPanel1Layout.setVerticalGroup(
+      jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+      .addGroup(jPanel1Layout.createSequentialGroup()
+        .addGap(24, 24, 24)
+        .addComponent(InitTitlePNL, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+        .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+        .addContainerGap(70, Short.MAX_VALUE))
+    );
+
     javax.swing.GroupLayout InitialPanelLayout = new javax.swing.GroupLayout(InitialPanel);
     InitialPanel.setLayout(InitialPanelLayout);
     InitialPanelLayout.setHorizontalGroup(
       InitialPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-      .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, InitialPanelLayout.createSequentialGroup()
-        .addContainerGap(297, Short.MAX_VALUE)
-        .addGroup(InitialPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-          .addGroup(InitialPanelLayout.createSequentialGroup()
-            .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGap(15, 15, 15))
-          .addComponent(InitTitlePNL, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-        .addGap(219, 219, 219))
+      .addGroup(InitialPanelLayout.createSequentialGroup()
+        .addGap(191, 191, 191)
+        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+        .addContainerGap(220, Short.MAX_VALUE))
     );
     InitialPanelLayout.setVerticalGroup(
       InitialPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
       .addGroup(InitialPanelLayout.createSequentialGroup()
-        .addGap(148, 148, 148)
-        .addComponent(InitTitlePNL, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-        .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-        .addContainerGap(228, Short.MAX_VALUE))
+        .addGap(130, 130, 130)
+        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+        .addContainerGap(152, Short.MAX_VALUE))
     );
 
     MainPanel.add(InitialPanel, "InitialPanel");
@@ -265,13 +312,14 @@ public class MainForm extends javax.swing.JFrame {
     UsernameText1.setLabelFor(UsernameField);
     UsernameText1.setText("Username");
 
+    UsernameFieldRegPNL.setToolTipText("Enter Username");
     UsernameFieldRegPNL.setNextFocusableComponent(EmailField);
 
     UsernameText3.setFont(new java.awt.Font("SansSerif", 0, 18)); // NOI18N
     UsernameText3.setLabelFor(EmailField);
     UsernameText3.setText("Email");
 
-    EmailField.setNextFocusableComponent(DOBPicker);
+    EmailField.setToolTipText("Enter Email");
 
     UsernameText4.setFont(new java.awt.Font("SansSerif", 0, 18)); // NOI18N
     UsernameText4.setLabelFor(PasswordFieldRegPNL);
@@ -281,8 +329,10 @@ public class MainForm extends javax.swing.JFrame {
     UsernameText5.setLabelFor(SurnameField);
     UsernameText5.setText("Surname");
 
+    SurnameField.setToolTipText("Enter Surname");
     SurnameField.setNextFocusableComponent(UsernameFieldRegPNL);
 
+    FirstNameField.setToolTipText("Enter First Name");
     FirstNameField.setNextFocusableComponent(SurnameField);
 
     UsernameText6.setFont(new java.awt.Font("SansSerif", 0, 18)); // NOI18N
@@ -290,11 +340,9 @@ public class MainForm extends javax.swing.JFrame {
     UsernameText6.setText("First Name");
 
     UsernameText7.setFont(new java.awt.Font("SansSerif", 0, 18)); // NOI18N
-    UsernameText7.setLabelFor(DOBPicker);
     UsernameText7.setText("Date Of Birth");
 
-    DOBPicker.setNextFocusableComponent(PasswordFieldRegPNL.getNextFocusableComponent());
-
+    PasswordFieldRegPNL.setToolTipText("Enter Password");
     PasswordFieldRegPNL.setNextFocusableComponent(RepeatedPasswordField);
     PasswordFieldRegPNL.addMouseListener(new java.awt.event.MouseAdapter() {
       public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -344,6 +392,7 @@ public class MainForm extends javax.swing.JFrame {
 
     LoginInsteadButtonRegPNL.setFont(new java.awt.Font("SansSerif", 1, 15)); // NOI18N
     LoginInsteadButtonRegPNL.setText("Login Instead");
+    LoginInsteadButtonRegPNL.setToolTipText("Click to switch to Login");
     LoginInsteadButtonRegPNL.addActionListener(new java.awt.event.ActionListener() {
       public void actionPerformed(java.awt.event.ActionEvent evt) {
         LoginInsteadButtonRegPNLActionPerformed(evt);
@@ -354,12 +403,15 @@ public class MainForm extends javax.swing.JFrame {
     UsernameText8.setLabelFor(RepeatedPasswordField);
     UsernameText8.setText("Confirm Password");
 
+    RepeatedPasswordField.setToolTipText("Renter Password");
     RepeatedPasswordField.setNextFocusableComponent(SignUpButtonRegPNL);
     RepeatedPasswordField.setOpaque(false);
 
     PassStrengthText.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
     PassStrengthText.setLabelFor(PasswordStrength);
     PassStrengthText.setText("Password Strength");
+
+    DOBPicker.setToolTipText("Enter Date of Birth");
 
     javax.swing.GroupLayout RegPNLLayout = new javax.swing.GroupLayout(RegPNL);
     RegPNL.setLayout(RegPNLLayout);
@@ -387,16 +439,15 @@ public class MainForm extends javax.swing.JFrame {
                   .addComponent(FirstNameField)
                   .addComponent(EmailField, javax.swing.GroupLayout.PREFERRED_SIZE, 239, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(43, 43, 43)
-                .addGroup(RegPNLLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                  .addGroup(RegPNLLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(UsernameText8)
-                    .addComponent(UsernameText4)
-                    .addComponent(UsernameText7)
-                    .addComponent(DOBPicker, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(PasswordFieldRegPNL)
-                    .addComponent(RepeatedPasswordField, javax.swing.GroupLayout.PREFERRED_SIZE, 209, javax.swing.GroupLayout.PREFERRED_SIZE))
-                  .addComponent(PasswordStrength, javax.swing.GroupLayout.PREFERRED_SIZE, 209, javax.swing.GroupLayout.PREFERRED_SIZE)
-                  .addComponent(PassStrengthText))))))
+                .addGroup(RegPNLLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                  .addComponent(UsernameText8)
+                  .addComponent(UsernameText4)
+                  .addComponent(UsernameText7)
+                  .addComponent(PasswordFieldRegPNL)
+                  .addComponent(RepeatedPasswordField, javax.swing.GroupLayout.DEFAULT_SIZE, 209, Short.MAX_VALUE)
+                  .addComponent(PasswordStrength, javax.swing.GroupLayout.DEFAULT_SIZE, 209, Short.MAX_VALUE)
+                  .addComponent(PassStrengthText)
+                  .addComponent(DOBPicker, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))))
         .addContainerGap(45, Short.MAX_VALUE))
     );
     RegPNLLayout.setVerticalGroup(
@@ -416,9 +467,9 @@ public class MainForm extends javax.swing.JFrame {
             .addComponent(UsernameText1))
           .addGroup(RegPNLLayout.createSequentialGroup()
             .addComponent(UsernameText7)
+            .addGap(9, 9, 9)
+            .addComponent(DOBPicker, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-            .addComponent(DOBPicker, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
             .addComponent(UsernameText4)
             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
             .addComponent(PasswordFieldRegPNL, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -447,21 +498,26 @@ public class MainForm extends javax.swing.JFrame {
         .addContainerGap(32, Short.MAX_VALUE))
     );
 
+    UsernameFieldRegPNL.getAccessibleContext().setAccessibleDescription("Enter Username");
+    EmailField.getAccessibleContext().setAccessibleDescription("Enter Email");
+    SurnameField.getAccessibleContext().setAccessibleDescription("Enter Surname");
+    FirstNameField.getAccessibleContext().setAccessibleDescription("Enter First Name");
+
     javax.swing.GroupLayout RegisterPanelLayout = new javax.swing.GroupLayout(RegisterPanel);
     RegisterPanel.setLayout(RegisterPanelLayout);
     RegisterPanelLayout.setHorizontalGroup(
       RegisterPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
       .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, RegisterPanelLayout.createSequentialGroup()
-        .addContainerGap(155, Short.MAX_VALUE)
+        .addContainerGap(135, Short.MAX_VALUE)
         .addComponent(RegPNL, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-        .addGap(92, 92, 92))
+        .addGap(121, 121, 121))
     );
     RegisterPanelLayout.setVerticalGroup(
       RegisterPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
       .addGroup(RegisterPanelLayout.createSequentialGroup()
-        .addGap(28, 28, 28)
+        .addGap(29, 29, 29)
         .addComponent(RegPNL, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-        .addContainerGap(84, Short.MAX_VALUE))
+        .addContainerGap(83, Short.MAX_VALUE))
     );
 
     MainPanel.add(RegisterPanel, "RegisterPanel");
@@ -481,13 +537,18 @@ public class MainForm extends javax.swing.JFrame {
     UsernameText.setFont(new java.awt.Font("SansSerif", 0, 18)); // NOI18N
     UsernameText.setText("Username");
 
+    UsernameField.setToolTipText("Enter your Username");
+
     UsernameText2.setFont(new java.awt.Font("SansSerif", 0, 18)); // NOI18N
     UsernameText2.setText("Password");
+
+    PasswordField.setToolTipText("Enter Password");
 
     ErrorText.setForeground(new java.awt.Color(255, 0, 51));
 
     SignUpInsteadButtonLogPNL.setFont(new java.awt.Font("SansSerif", 1, 15)); // NOI18N
     SignUpInsteadButtonLogPNL.setText("Sign Up Instead");
+    SignUpInsteadButtonLogPNL.setToolTipText("Click to Sign Up");
     SignUpInsteadButtonLogPNL.addActionListener(new java.awt.event.ActionListener() {
       public void actionPerformed(java.awt.event.ActionEvent evt) {
         SignUpInsteadButtonLogPNLActionPerformed(evt);
@@ -540,24 +601,103 @@ public class MainForm extends javax.swing.JFrame {
     LoginPanel.setLayout(LoginPanelLayout);
     LoginPanelLayout.setHorizontalGroup(
       LoginPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-      .addGroup(LoginPanelLayout.createSequentialGroup()
-        .addGap(182, 182, 182)
+      .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, LoginPanelLayout.createSequentialGroup()
+        .addContainerGap(243, Short.MAX_VALUE)
         .addComponent(LogPNL, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-        .addContainerGap(282, Short.MAX_VALUE))
+        .addGap(230, 230, 230))
     );
     LoginPanelLayout.setVerticalGroup(
       LoginPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
       .addGroup(LoginPanelLayout.createSequentialGroup()
-        .addGap(75, 75, 75)
+        .addGap(122, 122, 122)
         .addComponent(LogPNL, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE)
-        .addContainerGap(228, Short.MAX_VALUE))
+        .addContainerGap(181, Short.MAX_VALUE))
     );
 
     MainPanel.add(LoginPanel, "LoginPanel");
 
+    MainSplit.setDividerSize(2);
+
+    SidePane.setEnabled(false);
+    SidePane.setPreferredSize(new java.awt.Dimension(200, 0));
+
+    AccountName.setFont(new java.awt.Font("sansserif", 1, 14)); // NOI18N
+    AccountName.setText("John Doe");
+    AccountName.setMaximumSize(new java.awt.Dimension(73, 15));
+    AccountName.setMinimumSize(new java.awt.Dimension(73, 15));
+    AccountName.setPreferredSize(new java.awt.Dimension(73, 15));
+
+    AccountUsername.setText("johndoe");
+
+    AccountSetButtons.setText("Account Settings");
+    AccountSetButtons.addActionListener(new java.awt.event.ActionListener() {
+      public void actionPerformed(java.awt.event.ActionEvent evt) {
+        AccountSetButtonsActionPerformed(evt);
+      }
+    });
+
+    AccountIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ASSETS/icons8-account-48.png"))); // NOI18N
+
+    javax.swing.GroupLayout AccountPanelLayout = new javax.swing.GroupLayout(AccountPanel);
+    AccountPanel.setLayout(AccountPanelLayout);
+    AccountPanelLayout.setHorizontalGroup(
+      AccountPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+      .addGroup(AccountPanelLayout.createSequentialGroup()
+        .addComponent(AccountIcon, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
+        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        .addGroup(AccountPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+          .addComponent(AccountName, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+          .addComponent(AccountUsername, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)))
+      .addGroup(AccountPanelLayout.createSequentialGroup()
+        .addContainerGap()
+        .addComponent(AccountSetButtons)
+        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+    );
+    AccountPanelLayout.setVerticalGroup(
+      AccountPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+      .addGroup(AccountPanelLayout.createSequentialGroup()
+        .addGap(10, 10, 10)
+        .addGroup(AccountPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+          .addGroup(AccountPanelLayout.createSequentialGroup()
+            .addComponent(AccountName, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+            .addComponent(AccountUsername))
+          .addComponent(AccountIcon, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
+        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+        .addComponent(AccountSetButtons)
+        .addContainerGap(10, Short.MAX_VALUE))
+    );
+
+    javax.swing.GroupLayout SidePaneLayout = new javax.swing.GroupLayout(SidePane);
+    SidePane.setLayout(SidePaneLayout);
+    SidePaneLayout.setHorizontalGroup(
+      SidePaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+      .addComponent(AccountPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+    );
+    SidePaneLayout.setVerticalGroup(
+      SidePaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+      .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, SidePaneLayout.createSequentialGroup()
+        .addGap(0, 484, Short.MAX_VALUE)
+        .addComponent(AccountPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+    );
+
+    MainSplit.setLeftComponent(SidePane);
+
+    CardPV.setPreferredSize(new java.awt.Dimension(670, 578));
     CardPV.setLayout(new java.awt.CardLayout());
 
-    NewProjectButtonPV.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ASSETS/icons8-plus-20.png"))); // NOI18N
+    ProjectViewCardPV.setPreferredSize(new java.awt.Dimension(620, 578));
+    ProjectViewCardPV.addContainerListener(new java.awt.event.ContainerAdapter() {
+      public void componentAdded(java.awt.event.ContainerEvent evt) {
+        ProjectViewCardPVComponentAdded(evt);
+      }
+    });
+    ProjectViewCardPV.addComponentListener(new java.awt.event.ComponentAdapter() {
+      public void componentShown(java.awt.event.ComponentEvent evt) {
+        ProjectViewCardPVComponentShown(evt);
+      }
+    });
+
     NewProjectButtonPV.setText("New Project");
     NewProjectButtonPV.setToolTipText("Click to create new project");
     NewProjectButtonPV.addActionListener(new java.awt.event.ActionListener() {
@@ -566,43 +706,67 @@ public class MainForm extends javax.swing.JFrame {
       }
     });
 
-    RefreshButtonPV.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ASSETS/icons8-process-20 (1).png"))); // NOI18N
     RefreshButtonPV.setText("Refresh");
+    RefreshButtonPV.addActionListener(new java.awt.event.ActionListener() {
+      public void actionPerformed(java.awt.event.ActionEvent evt) {
+        RefreshButtonPVActionPerformed(evt);
+      }
+    });
 
     javax.swing.GroupLayout ProjectViewToolBarPVLayout = new javax.swing.GroupLayout(ProjectViewToolBarPV);
     ProjectViewToolBarPV.setLayout(ProjectViewToolBarPVLayout);
     ProjectViewToolBarPVLayout.setHorizontalGroup(
       ProjectViewToolBarPVLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
       .addGroup(ProjectViewToolBarPVLayout.createSequentialGroup()
-        .addGap(15, 15, 15)
+        .addContainerGap()
         .addComponent(NewProjectButtonPV, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
-        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 543, Short.MAX_VALUE)
-        .addComponent(RefreshButtonPV, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
+        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        .addComponent(RefreshButtonPV, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
         .addContainerGap())
     );
     ProjectViewToolBarPVLayout.setVerticalGroup(
       ProjectViewToolBarPVLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-      .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, ProjectViewToolBarPVLayout.createSequentialGroup()
+      .addGroup(ProjectViewToolBarPVLayout.createSequentialGroup()
         .addContainerGap()
-        .addGroup(ProjectViewToolBarPVLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-          .addComponent(RefreshButtonPV, javax.swing.GroupLayout.DEFAULT_SIZE, 35, Short.MAX_VALUE)
-          .addComponent(NewProjectButtonPV, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        .addContainerGap())
+        .addGroup(ProjectViewToolBarPVLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+          .addComponent(NewProjectButtonPV, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+          .addComponent(RefreshButtonPV, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)))
     );
+
+    ProjectScrollViewPV.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+    ProjectScrollViewPV.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
+
+    javax.swing.GroupLayout ScrollViewPVLayout = new javax.swing.GroupLayout(ScrollViewPV);
+    ScrollViewPV.setLayout(ScrollViewPVLayout);
+    ScrollViewPVLayout.setHorizontalGroup(
+      ScrollViewPVLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+      .addGap(0, 818, Short.MAX_VALUE)
+    );
+    ScrollViewPVLayout.setVerticalGroup(
+      ScrollViewPVLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+      .addGap(0, 523, Short.MAX_VALUE)
+    );
+
+    ProjectScrollViewPV.setViewportView(ScrollViewPV);
 
     javax.swing.GroupLayout ProjectViewCardPVLayout = new javax.swing.GroupLayout(ProjectViewCardPV);
     ProjectViewCardPV.setLayout(ProjectViewCardPVLayout);
     ProjectViewCardPVLayout.setHorizontalGroup(
       ProjectViewCardPVLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-      .addComponent(ProjectViewToolBarPV, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-      .addComponent(ProjectScrollViewPV)
+      .addGroup(ProjectViewCardPVLayout.createSequentialGroup()
+        .addContainerGap()
+        .addGroup(ProjectViewCardPVLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+          .addComponent(ProjectScrollViewPV, javax.swing.GroupLayout.DEFAULT_SIZE, 663, Short.MAX_VALUE)
+          .addGroup(ProjectViewCardPVLayout.createSequentialGroup()
+            .addComponent(ProjectViewToolBarPV, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addContainerGap())))
     );
     ProjectViewCardPVLayout.setVerticalGroup(
       ProjectViewCardPVLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
       .addGroup(ProjectViewCardPVLayout.createSequentialGroup()
         .addComponent(ProjectViewToolBarPV, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-        .addComponent(ProjectScrollViewPV, javax.swing.GroupLayout.DEFAULT_SIZE, 519, Short.MAX_VALUE))
+        .addComponent(ProjectScrollViewPV, javax.swing.GroupLayout.DEFAULT_SIZE, 523, Short.MAX_VALUE))
     );
 
     CardPV.add(ProjectViewCardPV, "ProjectViewPV");
@@ -620,7 +784,6 @@ public class MainForm extends javax.swing.JFrame {
     DesriptionTextAreaNPPV.setRows(5);
     TextScrollNPPV.setViewportView(DesriptionTextAreaNPPV);
 
-    CreateProjectBTNNPPV.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ASSETS/icons8-plus-20.png"))); // NOI18N
     CreateProjectBTNNPPV.setText("Create");
     CreateProjectBTNNPPV.addActionListener(new java.awt.event.ActionListener() {
       public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -669,8 +832,12 @@ public class MainForm extends javax.swing.JFrame {
         .addGap(22, 22, 22))
     );
 
-    BackButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ASSETS/icons8-back-arrow-20.png"))); // NOI18N
     BackButton.setText("Back");
+    BackButton.addActionListener(new java.awt.event.ActionListener() {
+      public void actionPerformed(java.awt.event.ActionEvent evt) {
+        BackButtonActionPerformed(evt);
+      }
+    });
 
     javax.swing.GroupLayout ToolBarNPPVLayout = new javax.swing.GroupLayout(ToolBarNPPV);
     ToolBarNPPV.setLayout(ToolBarNPPVLayout);
@@ -679,7 +846,7 @@ public class MainForm extends javax.swing.JFrame {
       .addGroup(ToolBarNPPVLayout.createSequentialGroup()
         .addGap(20, 20, 20)
         .addComponent(BackButton)
-        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        .addContainerGap(577, Short.MAX_VALUE))
       .addGroup(ToolBarNPPVLayout.createSequentialGroup()
         .addComponent(SeperatorNPPV)
         .addContainerGap())
@@ -688,7 +855,7 @@ public class MainForm extends javax.swing.JFrame {
       ToolBarNPPVLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
       .addGroup(ToolBarNPPVLayout.createSequentialGroup()
         .addContainerGap()
-        .addComponent(BackButton, javax.swing.GroupLayout.DEFAULT_SIZE, 39, Short.MAX_VALUE)
+        .addComponent(BackButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
         .addComponent(SeperatorNPPV, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE))
     );
@@ -697,34 +864,123 @@ public class MainForm extends javax.swing.JFrame {
     NewProjectViewPV.setLayout(NewProjectViewPVLayout);
     NewProjectViewPVLayout.setHorizontalGroup(
       NewProjectViewPVLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-      .addGroup(NewProjectViewPVLayout.createSequentialGroup()
-        .addGap(208, 208, 208)
-        .addComponent(NewProjectDetailsPV, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-        .addContainerGap(233, Short.MAX_VALUE))
       .addComponent(ToolBarNPPV, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+      .addGroup(NewProjectViewPVLayout.createSequentialGroup()
+        .addGap(121, 121, 121)
+        .addComponent(NewProjectDetailsPV, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
     );
     NewProjectViewPVLayout.setVerticalGroup(
       NewProjectViewPVLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
       .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, NewProjectViewPVLayout.createSequentialGroup()
         .addComponent(ToolBarNPPV, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 24, Short.MAX_VALUE)
+        .addGap(50, 50, 50)
         .addComponent(NewProjectDetailsPV, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-        .addGap(97, 97, 97))
+        .addContainerGap(93, Short.MAX_VALUE))
     );
 
     CardPV.add(NewProjectViewPV, "NewProject");
+
+    javax.swing.GroupLayout ProjectPageLayout = new javax.swing.GroupLayout(ProjectPage);
+    ProjectPage.setLayout(ProjectPageLayout);
+    ProjectPageLayout.setHorizontalGroup(
+      ProjectPageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+      .addGap(0, 669, Short.MAX_VALUE)
+    );
+    ProjectPageLayout.setVerticalGroup(
+      ProjectPageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+      .addGap(0, 578, Short.MAX_VALUE)
+    );
+
+    CardPV.add(ProjectPage, "card6");
+
+    AccounSettingsBackButton.setText("Back");
+    AccounSettingsBackButton.addActionListener(new java.awt.event.ActionListener() {
+      public void actionPerformed(java.awt.event.ActionEvent evt) {
+        AccounSettingsBackButtonActionPerformed(evt);
+      }
+    });
+
+    jLabel2.setFont(new java.awt.Font("sansserif", 1, 14)); // NOI18N
+    jLabel2.setText("Account Settings");
+
+    javax.swing.GroupLayout AccountSettingToolbarLayout = new javax.swing.GroupLayout(AccountSettingToolbar);
+    AccountSettingToolbar.setLayout(AccountSettingToolbarLayout);
+    AccountSettingToolbarLayout.setHorizontalGroup(
+      AccountSettingToolbarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+      .addGroup(AccountSettingToolbarLayout.createSequentialGroup()
+        .addContainerGap()
+        .addComponent(AccounSettingsBackButton, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
+        .addGap(164, 164, 164)
+        .addComponent(jLabel2)
+        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+      .addComponent(jSeparator1, javax.swing.GroupLayout.Alignment.TRAILING)
+    );
+    AccountSettingToolbarLayout.setVerticalGroup(
+      AccountSettingToolbarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+      .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, AccountSettingToolbarLayout.createSequentialGroup()
+        .addContainerGap()
+        .addGroup(AccountSettingToolbarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+          .addComponent(AccounSettingsBackButton, javax.swing.GroupLayout.DEFAULT_SIZE, 36, Short.MAX_VALUE)
+          .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        .addGap(3, 3, 3)
+        .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+    );
+
+    DeleteAccountButton.setText("Delete Account");
+    DeleteAccountButton.addActionListener(new java.awt.event.ActionListener() {
+      public void actionPerformed(java.awt.event.ActionEvent evt) {
+        DeleteAccountButtonActionPerformed(evt);
+      }
+    });
+
+    javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+    jPanel2.setLayout(jPanel2Layout);
+    jPanel2Layout.setHorizontalGroup(
+      jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+      .addGroup(jPanel2Layout.createSequentialGroup()
+        .addGap(268, 268, 268)
+        .addComponent(DeleteAccountButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        .addGap(249, 249, 249))
+    );
+    jPanel2Layout.setVerticalGroup(
+      jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+      .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+        .addGap(420, 420, 420)
+        .addComponent(DeleteAccountButton, javax.swing.GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE)
+        .addGap(64, 64, 64))
+    );
+
+    javax.swing.GroupLayout AccountSettingsPanelLayout = new javax.swing.GroupLayout(AccountSettingsPanel);
+    AccountSettingsPanel.setLayout(AccountSettingsPanelLayout);
+    AccountSettingsPanelLayout.setHorizontalGroup(
+      AccountSettingsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+      .addGroup(AccountSettingsPanelLayout.createSequentialGroup()
+        .addContainerGap()
+        .addComponent(AccountSettingToolbar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+      .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+    );
+    AccountSettingsPanelLayout.setVerticalGroup(
+      AccountSettingsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+      .addGroup(AccountSettingsPanelLayout.createSequentialGroup()
+        .addComponent(AccountSettingToolbar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+        .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+    );
+
+    CardPV.add(AccountSettingsPanel, "AccountSettings");
+
+    MainSplit.setRightComponent(CardPV);
 
     javax.swing.GroupLayout ProjectViewLayout = new javax.swing.GroupLayout(ProjectView);
     ProjectView.setLayout(ProjectViewLayout);
     ProjectViewLayout.setHorizontalGroup(
       ProjectViewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-      .addComponent(CardPV, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+      .addComponent(MainSplit, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 829, Short.MAX_VALUE)
     );
     ProjectViewLayout.setVerticalGroup(
       ProjectViewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-      .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, ProjectViewLayout.createSequentialGroup()
-        .addComponent(CardPV, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        .addContainerGap())
+      .addComponent(MainSplit, javax.swing.GroupLayout.Alignment.TRAILING)
     );
 
     MainPanel.add(ProjectView, "ProjectView");
@@ -752,19 +1008,23 @@ public class MainForm extends javax.swing.JFrame {
   }// </editor-fold>//GEN-END:initComponents
 
     private void SignUpButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SignUpButtonActionPerformed
-    cardLayoutMain.show(MainPanel, "RegisterPanel");
+    cardLayoutMain.show(MainPanel, "RegisterPanel");  // Switch to Register View
     }//GEN-LAST:event_SignUpButtonActionPerformed
 
     private void SignInButtonPNLActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SignInButtonPNLActionPerformed
-    cardLayoutMain.show(MainPanel, "LoginPanel");
+    cardLayoutMain.show(MainPanel, "LoginPanel");  // Switch to Login View
     }//GEN-LAST:event_SignInButtonPNLActionPerformed
 
         private void SignInButtonLogPNLActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SignInButtonLogPNLActionPerformed
+    // Sign In Logic
+
     UserManager userManager = new UserManager();
     if (userManager.LoginUser(UsernameField.getText(), new String(PasswordField.getPassword()))) {
       currentUsername = UsernameField.getText();
       currentUser = userManager.getUser(currentUsername);
       cardLayoutMain.show(MainPanel, "ProjectView");
+      refreshProjectView();
+      setAccountDetails();
       JOptionPane.showMessageDialog(this,
               "✔ Successful Login"
               + "\nWelcome " + currentUser.getUserFirstName()
@@ -782,6 +1042,8 @@ public class MainForm extends javax.swing.JFrame {
         }//GEN-LAST:event_SignUpInsteadButtonLogPNLActionPerformed
 
         private void SignUpButtonRegPNLActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SignUpButtonRegPNLActionPerformed
+    // Sign In Logic
+
     ErrorTextRegPNL.setText("");
     String firstname = FirstNameField.getText();
     String surname = SurnameField.getText();
@@ -909,7 +1171,11 @@ public class MainForm extends javax.swing.JFrame {
       ErrorLabelNPPV.setText("Please Enter the Project Title");
     } else if (ProjectDescriptionLabelNPPV.getText().equals("")) {
       ErrorLabelNPPV.setText("Please Enter the Project Description");
-    } else if (projectManager.CreateProject(ProjectNameTXTNPPV.getText(), ProjectDescriptionLabelNPPV.getText(), currentUser)) {
+    } else if (ProjectNameTXTNPPV.getText().length() > 100) {
+      ErrorLabelNPPV.setText("Title is too long");
+    } else if (ProjectDescriptionLabelNPPV.getText().length() > 300) {
+      ErrorLabelNPPV.setText("Desription is too long");
+    } else if (projectManager.CreateProject(ProjectNameTXTNPPV.getText(), DesriptionTextAreaNPPV.getText(), currentUser)) {
       cardLayoutPV.show(CardPV, "ProjectViewPV");
       JOptionPane.showMessageDialog(this,
               "Successfully Created Project ✔"
@@ -917,6 +1183,40 @@ public class MainForm extends javax.swing.JFrame {
       );
     }
   }//GEN-LAST:event_CreateProjectBTNNPPVActionPerformed
+
+  private void RefreshButtonPVActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RefreshButtonPVActionPerformed
+    CardPV.repaint();
+    refreshProjectView();
+    CardPV.repaint();
+  }//GEN-LAST:event_RefreshButtonPVActionPerformed
+
+  private void BackButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BackButtonActionPerformed
+    cardLayoutPV.show(CardPV, "NewProject");
+    refreshProjectView();
+    cardLayoutPV.show(CardPV, "ProjectViewPV");
+  }//GEN-LAST:event_BackButtonActionPerformed
+
+  private void AccountSetButtonsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AccountSetButtonsActionPerformed
+    cardLayoutPV.show(CardPV, "AccountSettings");
+  }//GEN-LAST:event_AccountSetButtonsActionPerformed
+
+  private void DeleteAccountButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DeleteAccountButtonActionPerformed
+    UserManager userManager = new UserManager();
+    userManager.deleteAccount(currentUsername);
+  }//GEN-LAST:event_DeleteAccountButtonActionPerformed
+
+  private void ProjectViewCardPVComponentAdded(java.awt.event.ContainerEvent evt) {//GEN-FIRST:event_ProjectViewCardPVComponentAdded
+
+  }//GEN-LAST:event_ProjectViewCardPVComponentAdded
+
+  private void ProjectViewCardPVComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_ProjectViewCardPVComponentShown
+
+  }//GEN-LAST:event_ProjectViewCardPVComponentShown
+
+  private void AccounSettingsBackButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AccounSettingsBackButtonActionPerformed
+    refreshProjectView();
+    cardLayoutPV.show(CardPV, "ProjectViewPV");
+  }//GEN-LAST:event_AccounSettingsBackButtonActionPerformed
 
   /**
    * @param args the command line arguments
@@ -944,6 +1244,9 @@ public class MainForm extends javax.swing.JFrame {
       java.util.logging.Logger.getLogger(MainForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
     }
     //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
+    //</editor-fold>
 
     /* Create and display the form */
     java.awt.EventQueue.invokeLater(new Runnable() {
@@ -954,10 +1257,19 @@ public class MainForm extends javax.swing.JFrame {
   }
 
   // Variables declaration - do not modify//GEN-BEGIN:variables
+  private javax.swing.JToggleButton AccounSettingsBackButton;
+  private javax.swing.JLabel AccountIcon;
+  private javax.swing.JLabel AccountName;
+  private javax.swing.JPanel AccountPanel;
+  private javax.swing.JButton AccountSetButtons;
+  private javax.swing.JPanel AccountSettingToolbar;
+  private javax.swing.JPanel AccountSettingsPanel;
+  private javax.swing.JLabel AccountUsername;
   private javax.swing.JButton BackButton;
-  private javax.swing.JPanel CardPV;
+  public static javax.swing.JPanel CardPV;
   private javax.swing.JButton CreateProjectBTNNPPV;
   private org.jdesktop.swingx.JXDatePicker DOBPicker;
+  private javax.swing.JButton DeleteAccountButton;
   private javax.swing.JTextArea DesriptionTextAreaNPPV;
   private javax.swing.JTextField EmailField;
   private javax.swing.JLabel ErrorLabelNPPV;
@@ -970,6 +1282,7 @@ public class MainForm extends javax.swing.JFrame {
   private javax.swing.JButton LoginInsteadButtonRegPNL;
   private javax.swing.JPanel LoginPanel;
   private javax.swing.JPanel MainPanel;
+  private javax.swing.JSplitPane MainSplit;
   private javax.swing.JMenuBar MenuBar;
   private javax.swing.JButton NewProjectButtonPV;
   private javax.swing.JPanel NewProjectDetailsPV;
@@ -981,6 +1294,7 @@ public class MainForm extends javax.swing.JFrame {
   private javax.swing.JLabel ProjectDescriptionLabelNPPV;
   private javax.swing.JLabel ProjectNameLabelNPPV;
   private javax.swing.JTextField ProjectNameTXTNPPV;
+  private javax.swing.JPanel ProjectPage;
   private javax.swing.JScrollPane ProjectScrollViewPV;
   private javax.swing.JPanel ProjectView;
   private javax.swing.JPanel ProjectViewCardPV;
@@ -989,7 +1303,9 @@ public class MainForm extends javax.swing.JFrame {
   private javax.swing.JPanel RegPNL;
   private javax.swing.JPanel RegisterPanel;
   private javax.swing.JPasswordField RepeatedPasswordField;
+  private javax.swing.JPanel ScrollViewPV;
   private javax.swing.JSeparator SeperatorNPPV;
+  private javax.swing.JPanel SidePane;
   private javax.swing.JButton SignInButtonLogPNL;
   private javax.swing.JButton SignInButtonPNL;
   private javax.swing.JButton SignUpButton;
@@ -1011,8 +1327,12 @@ public class MainForm extends javax.swing.JFrame {
   private javax.swing.JLabel UsernameText8;
   private javax.swing.JLabel Welcome1Text;
   private javax.swing.JLabel jLabel1;
+  private javax.swing.JLabel jLabel2;
   private javax.swing.JMenu jMenu1;
   private javax.swing.JMenu jMenu2;
+  private javax.swing.JPanel jPanel1;
+  private javax.swing.JPanel jPanel2;
   private javax.swing.JPanel jPanel3;
+  private javax.swing.JSeparator jSeparator1;
   // End of variables declaration//GEN-END:variables
 }

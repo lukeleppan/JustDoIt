@@ -18,7 +18,7 @@ public class UserManager {
   public boolean CheckForUser(String username) {
     boolean exists = false;
 
-    try ( ResultSet rs = DBCon.query("SELECT * FROM tblUserCreds");) {
+    try (ResultSet rs = DBCon.query("SELECT * FROM tblUserCreds");) {
       List<UserCreds> userCredsShareableList = new ArrayList();
 
       while (rs.next()) {
@@ -103,7 +103,7 @@ public class UserManager {
     boolean success = false;
 
     List<UserCreds> userCredsShareableList = new ArrayList();
-    try ( ResultSet rs = DBCon.query("SELECT * FROM tblUserCreds")) {
+    try (ResultSet rs = DBCon.query("SELECT * FROM tblUserCreds")) {
       while (rs.next()) {
         UserCreds tempUserCred = new UserCreds(
                 rs.getInt("UserCredID"),
@@ -129,7 +129,7 @@ public class UserManager {
     User user = null;
     int UserID = -1;
     List<UserCreds> userCredsShareableList = new ArrayList();
-    try ( ResultSet rs = DBCon.query("SELECT * FROM tblUserCreds")) {
+    try (ResultSet rs = DBCon.query("SELECT * FROM tblUserCreds")) {
       while (rs.next()) {
         UserCreds tempUserCred = new UserCreds(
                 rs.getInt("UserCredID"),
@@ -149,7 +149,7 @@ public class UserManager {
     }
 
     List<User> userShareableList = new ArrayList();
-    try ( ResultSet rs = DBCon.query("SELECT * FROM tblUsers")) {
+    try (ResultSet rs = DBCon.query("SELECT * FROM tblUsers")) {
       while (rs.next()) {
         User tempUser = new User(
                 rs.getInt("UserID"),
@@ -177,6 +177,23 @@ public class UserManager {
     }
 
     return user;
+  }
+
+  public boolean deleteAccount(String username) {
+    boolean success = true;
+    int numCheck = 0;
+
+    try {
+      numCheck = DBCon.update("DELETE * FROM tblUserCreds WHERE Username = " + username);
+    } catch (SQLException ex) {
+      Logger.getLogger(UserManager.class.getName()).log(Level.SEVERE, null, ex);
+    }
+
+    if (numCheck == 1) {
+      success = true;
+    }
+
+    return success;
   }
 
 }
