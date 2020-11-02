@@ -43,13 +43,22 @@ public class ProjectTile extends javax.swing.JPanel {
   // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
   private void initComponents() {
 
+    CardLayout = new javax.swing.JPanel();
+    View = new javax.swing.JPanel();
     ProjectTitleTile = new javax.swing.JLabel();
     ProjectDescriptionTile = new javax.swing.JTextArea();
     OpenBTN = new javax.swing.JButton();
-    EditBTN = new javax.swing.JButton();
+    EditBTNView = new javax.swing.JButton();
     DeleteBTN = new javax.swing.JButton();
+    EDIT = new javax.swing.JPanel();
+    jTextField1 = new javax.swing.JTextField();
+    jScrollPane1 = new javax.swing.JScrollPane();
+    jTextArea1 = new javax.swing.JTextArea();
+    SaveBTNEdit = new javax.swing.JButton();
 
     setBorder(new javax.swing.border.LineBorder(new java.awt.Color(153, 153, 153), 1, true));
+
+    CardLayout.setLayout(new java.awt.CardLayout());
 
     ProjectTitleTile.setFont(new java.awt.Font("sansserif", 1, 18)); // NOI18N
 
@@ -67,7 +76,7 @@ public class ProjectTile extends javax.swing.JPanel {
       }
     });
 
-    EditBTN.setText("Edit");
+    EditBTNView.setText("Edit");
 
     DeleteBTN.setText("Delete");
     DeleteBTN.addActionListener(new java.awt.event.ActionListener() {
@@ -76,38 +85,91 @@ public class ProjectTile extends javax.swing.JPanel {
       }
     });
 
+    javax.swing.GroupLayout ViewLayout = new javax.swing.GroupLayout(View);
+    View.setLayout(ViewLayout);
+    ViewLayout.setHorizontalGroup(
+      ViewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+      .addGroup(ViewLayout.createSequentialGroup()
+        .addContainerGap()
+        .addGroup(ViewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+          .addComponent(ProjectDescriptionTile, javax.swing.GroupLayout.PREFERRED_SIZE, 353, javax.swing.GroupLayout.PREFERRED_SIZE)
+          .addComponent(ProjectTitleTile, javax.swing.GroupLayout.PREFERRED_SIZE, 353, javax.swing.GroupLayout.PREFERRED_SIZE))
+        .addContainerGap(34, Short.MAX_VALUE))
+      .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, ViewLayout.createSequentialGroup()
+        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        .addComponent(DeleteBTN)
+        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+        .addComponent(EditBTNView)
+        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+        .addComponent(OpenBTN)
+        .addGap(16, 16, 16))
+    );
+    ViewLayout.setVerticalGroup(
+      ViewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+      .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, ViewLayout.createSequentialGroup()
+        .addGap(21, 21, 21)
+        .addComponent(ProjectTitleTile, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+        .addComponent(ProjectDescriptionTile, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
+        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+        .addGroup(ViewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+          .addComponent(OpenBTN)
+          .addComponent(EditBTNView)
+          .addComponent(DeleteBTN))
+        .addContainerGap(23, Short.MAX_VALUE))
+    );
+
+    CardLayout.add(View, "card2");
+
+    jTextArea1.setColumns(20);
+    jTextArea1.setRows(5);
+    jScrollPane1.setViewportView(jTextArea1);
+
+    SaveBTNEdit.setText("Save");
+    SaveBTNEdit.addActionListener(new java.awt.event.ActionListener() {
+      public void actionPerformed(java.awt.event.ActionEvent evt) {
+        SaveBTNEditActionPerformed(evt);
+      }
+    });
+
+    javax.swing.GroupLayout EDITLayout = new javax.swing.GroupLayout(EDIT);
+    EDIT.setLayout(EDITLayout);
+    EDITLayout.setHorizontalGroup(
+      EDITLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+      .addGroup(EDITLayout.createSequentialGroup()
+        .addGap(23, 23, 23)
+        .addGroup(EDITLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+          .addComponent(jTextField1)
+          .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 314, Short.MAX_VALUE))
+        .addContainerGap(56, Short.MAX_VALUE))
+      .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, EDITLayout.createSequentialGroup()
+        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        .addComponent(SaveBTNEdit)
+        .addGap(21, 21, 21))
+    );
+    EDITLayout.setVerticalGroup(
+      EDITLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+      .addGroup(EDITLayout.createSequentialGroup()
+        .addGap(17, 17, 17)
+        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+        .addComponent(SaveBTNEdit)
+        .addContainerGap(10, Short.MAX_VALUE))
+    );
+
+    CardLayout.add(EDIT, "card3");
+
     javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
     this.setLayout(layout);
     layout.setHorizontalGroup(
       layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-      .addGroup(layout.createSequentialGroup()
-        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        .addComponent(DeleteBTN)
-        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-        .addComponent(EditBTN)
-        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-        .addComponent(OpenBTN)
-        .addContainerGap())
-      .addGroup(layout.createSequentialGroup()
-        .addGap(18, 18, 18)
-        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-          .addComponent(ProjectTitleTile, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-          .addComponent(ProjectDescriptionTile, javax.swing.GroupLayout.DEFAULT_SIZE, 353, Short.MAX_VALUE))
-        .addContainerGap(22, Short.MAX_VALUE))
+      .addComponent(CardLayout, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
     );
     layout.setVerticalGroup(
       layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-      .addGroup(layout.createSequentialGroup()
-        .addGap(14, 14, 14)
-        .addComponent(ProjectTitleTile, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
-        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-        .addComponent(ProjectDescriptionTile, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
-        .addGap(18, 18, Short.MAX_VALUE)
-        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-          .addComponent(OpenBTN)
-          .addComponent(EditBTN)
-          .addComponent(DeleteBTN))
-        .addContainerGap())
+      .addComponent(CardLayout, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
     );
   }// </editor-fold>//GEN-END:initComponents
 
@@ -125,11 +187,22 @@ public class ProjectTile extends javax.swing.JPanel {
     JOptionPane.showMessageDialog(MainForm.CardPV, "Project Deleted");
   }//GEN-LAST:event_DeleteBTNActionPerformed
 
+  private void SaveBTNEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SaveBTNEditActionPerformed
+
+  }//GEN-LAST:event_SaveBTNEditActionPerformed
+
   // Variables declaration - do not modify//GEN-BEGIN:variables
+  private javax.swing.JPanel CardLayout;
   private javax.swing.JButton DeleteBTN;
-  private javax.swing.JButton EditBTN;
+  private javax.swing.JPanel EDIT;
+  private javax.swing.JButton EditBTNView;
   private javax.swing.JButton OpenBTN;
   private javax.swing.JTextArea ProjectDescriptionTile;
   private javax.swing.JLabel ProjectTitleTile;
+  private javax.swing.JButton SaveBTNEdit;
+  private javax.swing.JPanel View;
+  private javax.swing.JScrollPane jScrollPane1;
+  private javax.swing.JTextArea jTextArea1;
+  private javax.swing.JTextField jTextField1;
   // End of variables declaration//GEN-END:variables
 }

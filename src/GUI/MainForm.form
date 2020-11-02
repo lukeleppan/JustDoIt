@@ -393,9 +393,6 @@
                       <ComponentRef name="EmailField"/>
                     </Property>
                   </Properties>
-                  <AccessibilityProperties>
-                    <Property name="AccessibleContext.accessibleDescription" type="java.lang.String" value="Enter Username"/>
-                  </AccessibilityProperties>
                 </Component>
                 <Component class="javax.swing.JLabel" name="UsernameText3">
                   <Properties>
@@ -412,9 +409,6 @@
                   <Properties>
                     <Property name="toolTipText" type="java.lang.String" value="Enter Email"/>
                   </Properties>
-                  <AccessibilityProperties>
-                    <Property name="AccessibleContext.accessibleDescription" type="java.lang.String" value="Enter Email"/>
-                  </AccessibilityProperties>
                 </Component>
                 <Component class="javax.swing.JLabel" name="UsernameText4">
                   <Properties>
@@ -445,9 +439,6 @@
                       <ComponentRef name="UsernameFieldRegPNL"/>
                     </Property>
                   </Properties>
-                  <AccessibilityProperties>
-                    <Property name="AccessibleContext.accessibleDescription" type="java.lang.String" value="Enter Surname"/>
-                  </AccessibilityProperties>
                 </Component>
                 <Component class="javax.swing.JTextField" name="FirstNameField">
                   <Properties>
@@ -456,9 +447,6 @@
                       <ComponentRef name="SurnameField"/>
                     </Property>
                   </Properties>
-                  <AccessibilityProperties>
-                    <Property name="AccessibleContext.accessibleDescription" type="java.lang.String" value="Enter First Name"/>
-                  </AccessibilityProperties>
                 </Component>
                 <Component class="javax.swing.JLabel" name="UsernameText6">
                   <Properties>
@@ -955,6 +943,9 @@
                           <SubComponents>
                             <Component class="javax.swing.JButton" name="NewProjectButtonPV">
                               <Properties>
+                                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                                  <Image iconType="3" name="/ASSETS/icons8-plus-20.png"/>
+                                </Property>
                                 <Property name="text" type="java.lang.String" value="New Project"/>
                                 <Property name="toolTipText" type="java.lang.String" value="Click to create new project"/>
                               </Properties>
@@ -964,6 +955,9 @@
                             </Component>
                             <Component class="javax.swing.JButton" name="RefreshButtonPV">
                               <Properties>
+                                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                                  <Image iconType="3" name="/ASSETS/icons8-process-20 (1).png"/>
+                                </Property>
                                 <Property name="text" type="java.lang.String" value="Refresh"/>
                               </Properties>
                               <Events>
@@ -1121,6 +1115,9 @@
                             </Container>
                             <Component class="javax.swing.JButton" name="CreateProjectBTNNPPV">
                               <Properties>
+                                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                                  <Image iconType="3" name="/ASSETS/icons8-plus-20.png"/>
+                                </Property>
                                 <Property name="text" type="java.lang.String" value="Create"/>
                               </Properties>
                               <Events>

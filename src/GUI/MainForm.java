@@ -498,11 +498,6 @@ public class MainForm extends javax.swing.JFrame {
         .addContainerGap(32, Short.MAX_VALUE))
     );
 
-    UsernameFieldRegPNL.getAccessibleContext().setAccessibleDescription("Enter Username");
-    EmailField.getAccessibleContext().setAccessibleDescription("Enter Email");
-    SurnameField.getAccessibleContext().setAccessibleDescription("Enter Surname");
-    FirstNameField.getAccessibleContext().setAccessibleDescription("Enter First Name");
-
     javax.swing.GroupLayout RegisterPanelLayout = new javax.swing.GroupLayout(RegisterPanel);
     RegisterPanel.setLayout(RegisterPanelLayout);
     RegisterPanelLayout.setHorizontalGroup(
@@ -698,6 +693,7 @@ public class MainForm extends javax.swing.JFrame {
       }
     });
 
+    NewProjectButtonPV.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ASSETS/icons8-plus-20.png"))); // NOI18N
     NewProjectButtonPV.setText("New Project");
     NewProjectButtonPV.setToolTipText("Click to create new project");
     NewProjectButtonPV.addActionListener(new java.awt.event.ActionListener() {
@@ -706,6 +702,7 @@ public class MainForm extends javax.swing.JFrame {
       }
     });
 
+    RefreshButtonPV.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ASSETS/icons8-process-20 (1).png"))); // NOI18N
     RefreshButtonPV.setText("Refresh");
     RefreshButtonPV.addActionListener(new java.awt.event.ActionListener() {
       public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -784,6 +781,7 @@ public class MainForm extends javax.swing.JFrame {
     DesriptionTextAreaNPPV.setRows(5);
     TextScrollNPPV.setViewportView(DesriptionTextAreaNPPV);
 
+    CreateProjectBTNNPPV.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ASSETS/icons8-plus-20.png"))); // NOI18N
     CreateProjectBTNNPPV.setText("Create");
     CreateProjectBTNNPPV.addActionListener(new java.awt.event.ActionListener() {
       public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1038,7 +1036,7 @@ public class MainForm extends javax.swing.JFrame {
         }//GEN-LAST:event_SignInButtonLogPNLActionPerformed
 
         private void SignUpInsteadButtonLogPNLActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SignUpInsteadButtonLogPNLActionPerformed
-    cardLayoutMain.show(MainPanel, "RegisterPanel");
+    cardLayoutMain.show(MainPanel, "RegisterPanel"); //Switch to Register Panel
         }//GEN-LAST:event_SignUpInsteadButtonLogPNLActionPerformed
 
         private void SignUpButtonRegPNLActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SignUpButtonRegPNLActionPerformed
@@ -1070,6 +1068,7 @@ public class MainForm extends javax.swing.JFrame {
 
     UserManager userManager = new UserManager();
 
+    // Use Validator
     if (!validator.validateFirstname()) {
       errorText = "Please Enter your First Name.";
     } else if (!validator.validateFirstnameLength()) {
@@ -1111,7 +1110,7 @@ public class MainForm extends javax.swing.JFrame {
         }//GEN-LAST:event_SignUpButtonRegPNLActionPerformed
 
         private void LoginInsteadButtonRegPNLActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LoginInsteadButtonRegPNLActionPerformed
-    cardLayoutMain.show(MainPanel, "LoginPanel");
+    cardLayoutMain.show(MainPanel, "LoginPanel"); // Switch to Login Panel
         }//GEN-LAST:event_LoginInsteadButtonRegPNLActionPerformed
 
   private void PasswordFieldRegPNLMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_PasswordFieldRegPNLMouseClicked
