@@ -16,96 +16,97 @@ import javax.swing.JOptionPane;
 
 public class MainForm extends javax.swing.JFrame {
 
-  CardLayout cardLayoutMain;
-  CardLayout cardLayoutPV;
+	CardLayout cardLayoutMain;
+	CardLayout cardLayoutPV;
 
-  public User currentUser;
-  public String currentUsername;
+	public User currentUser;
+	public String currentUsername;
 
-  public MainForm() {
-    initComponents();
+	public MainForm() {
+		initComponents();
 
-    this.setLocationRelativeTo(null); // Set to Center
-    cardLayoutMain = (CardLayout) (MainPanel.getLayout()); // Get Main card layout
-    cardLayoutPV = (CardLayout) (CardPV.getLayout());  // Get PV card layout
-  }
+		this.setLocationRelativeTo(null); // Set to Center
+		cardLayoutMain = (CardLayout) (MainPanel.getLayout()); // Get Main card layout
+		cardLayoutPV = (CardLayout) (CardPV.getLayout());  // Get PV card layout
+	}
 
-  private void refreshProjectView() {  //Loads Project Components for Project View
-    ProjectManager projectManager = new ProjectManager();
-    List<Project> projects = projectManager.GetUserProjects(currentUser);
-    Dimension preferredSize = new Dimension(818, 174 * projects.size() + 10);
-    ScrollViewPV.setPreferredSize(preferredSize);
-    ProjectScrollViewPV.getVerticalScrollBar().setUnitIncrement(16);
-    ProjectScrollViewPV.getVerticalScrollBar().setAutoscrolls(false);
+	private void refreshProjectView() {  //Loads Project Components for Project View
+		ScrollViewPV.removeAll();
+		ProjectManager projectManager = new ProjectManager();
+		List<Project> projects = projectManager.GetUserProjects(currentUser);
+		Dimension preferredSize = new Dimension(818, 174 * projects.size() + 10);
+		ScrollViewPV.setPreferredSize(preferredSize);
+		ProjectScrollViewPV.getVerticalScrollBar().setUnitIncrement(16);
+		ProjectScrollViewPV.getVerticalScrollBar().setAutoscrolls(false);
 
-    for (int i = 0; i < projects.size(); i++) {
-      Project project = projects.get(i);
-      ProjectTile projectTile = new ProjectTile(project);
+		for (int i = 0; i < projects.size(); i++) {
+			Project project = projects.get(i);
+			ProjectTile projectTile = new ProjectTile(project);
 
-      projectTile.setSize(395, 170);
-      projectTile.setLocation(140, 174 * i + 5);
-      projectTile.setVisible(true);
+			projectTile.setSize(395, 202);
+			projectTile.setLocation(140, 206 * i + 5);
+			projectTile.setVisible(true);
 
-      ScrollViewPV.add(projectTile);
-    }
-  }
+			ScrollViewPV.add(projectTile);
+		}
+	}
 
-  private void setAccountDetails() {  // Sets the current users details
-    AccountName.setText(currentUser.getUserFirstName() + " " + currentUser.getUserSurname());
-    AccountUsername.setText(currentUsername);
-  }
+	private void setAccountDetails() {  // Sets the current users details
+		AccountName.setText(currentUser.getUserFirstName() + " " + currentUser.getUserSurname());
+		AccountUsername.setText(currentUsername);
+	}
 
-  private int calcPassScore(String password) { // Calculates the password strength
-    int score = 0;
+	private int calcPassScore(String password) { // Calculates the password strength
+		int score = 0;
 
-    //Calc Score
-    Pattern upperRegex = Pattern.compile("[A-Z]");
-    Pattern lowerRegex = Pattern.compile("[a-z]");
-    Pattern numberRegex = Pattern.compile("[0-9]");
-    Pattern specialRegex = Pattern.compile(".[!,@,#,$,%,^,&,*,?,_,~,-,£,(,)]");
-    int minLength = 8;
+		//Calc Score
+		Pattern upperRegex = Pattern.compile("[A-Z]");
+		Pattern lowerRegex = Pattern.compile("[a-z]");
+		Pattern numberRegex = Pattern.compile("[0-9]");
+		Pattern specialRegex = Pattern.compile(".[!,@,#,$,%,^,&,*,?,_,~,-,£,(,)]");
+		int minLength = 8;
 
-    Matcher matcher1 = upperRegex.matcher(password);
-    if (matcher1.find()) {
-      score++;
-    }
+		Matcher matcher1 = upperRegex.matcher(password);
+		if (matcher1.find()) {
+			score++;
+		}
 
-    Matcher matcher2 = lowerRegex.matcher(password);
-    if (matcher2.find()) {
-      score++;
-    }
+		Matcher matcher2 = lowerRegex.matcher(password);
+		if (matcher2.find()) {
+			score++;
+		}
 
-    Matcher matcher3 = numberRegex.matcher(password);
-    if (matcher3.find()) {
-      score++;
-    }
+		Matcher matcher3 = numberRegex.matcher(password);
+		if (matcher3.find()) {
+			score++;
+		}
 
-    Matcher matcher4 = specialRegex.matcher(password);
-    if (matcher4.find()) {
-      score++;
-    }
+		Matcher matcher4 = specialRegex.matcher(password);
+		if (matcher4.find()) {
+			score++;
+		}
 
-    if (score < 3) {
-      score--;
-    }
+		if (score < 3) {
+			score--;
+		}
 
-    if (password.length() > minLength) {
-      score += Math.floor((password.length() - minLength) / 2);
-    }
+		if (password.length() > minLength) {
+			score += Math.floor((password.length() - minLength) / 2);
+		}
 
-    if (password.length() < minLength) {
-      score = 0;
-    }
+		if (password.length() < minLength) {
+			score = 0;
+		}
 
-    return score;
-  }
+		return score;
+	}
 
-  /**
-   * This method is called from within the constructor to initialize the form.
-   * WARNING: Do NOT modify this code. The content of this method is always
-   * regenerated by the Form Editor.
-   */
-  @SuppressWarnings("unchecked")
+	/**
+	 * This method is called from within the constructor to initialize the form.
+	 * WARNING: Do NOT modify this code. The content of this method is always
+	 * regenerated by the Form Editor.
+	 */
+	@SuppressWarnings("unchecked")
   // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
   private void initComponents() {
 
@@ -1006,145 +1007,145 @@ public class MainForm extends javax.swing.JFrame {
   }// </editor-fold>//GEN-END:initComponents
 
     private void SignUpButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SignUpButtonActionPerformed
-    cardLayoutMain.show(MainPanel, "RegisterPanel");  // Switch to Register View
+		cardLayoutMain.show(MainPanel, "RegisterPanel");  // Switch to Register View
     }//GEN-LAST:event_SignUpButtonActionPerformed
 
     private void SignInButtonPNLActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SignInButtonPNLActionPerformed
-    cardLayoutMain.show(MainPanel, "LoginPanel");  // Switch to Login View
+		cardLayoutMain.show(MainPanel, "LoginPanel");  // Switch to Login View
     }//GEN-LAST:event_SignInButtonPNLActionPerformed
 
         private void SignInButtonLogPNLActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SignInButtonLogPNLActionPerformed
-    // Sign In Logic
+		// Sign In Logic
 
-    UserManager userManager = new UserManager();
-    if (userManager.LoginUser(UsernameField.getText(), new String(PasswordField.getPassword()))) {
-      currentUsername = UsernameField.getText();
-      currentUser = userManager.getUser(currentUsername);
-      cardLayoutMain.show(MainPanel, "ProjectView");
-      refreshProjectView();
-      setAccountDetails();
-      JOptionPane.showMessageDialog(this,
-              "✔ Successful Login"
-              + "\nWelcome " + currentUser.getUserFirstName()
-      );
-    } else {
-      JOptionPane.showMessageDialog(this,
-              "❌ Username or Password is Incorrect"
-              + "\nPlease Try Again"
-      );
-    }
+		UserManager userManager = new UserManager();
+		if (userManager.LoginUser(UsernameField.getText(), new String(PasswordField.getPassword()))) {
+			currentUsername = UsernameField.getText();
+			currentUser = userManager.getUser(currentUsername);
+			cardLayoutMain.show(MainPanel, "ProjectView");
+			refreshProjectView();
+			setAccountDetails();
+			JOptionPane.showMessageDialog(this,
+							"✔ Successful Login"
+							+ "\nWelcome " + currentUser.getUserFirstName()
+			);
+		} else {
+			JOptionPane.showMessageDialog(this,
+							"❌ Username or Password is Incorrect"
+							+ "\nPlease Try Again"
+			);
+		}
         }//GEN-LAST:event_SignInButtonLogPNLActionPerformed
 
         private void SignUpInsteadButtonLogPNLActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SignUpInsteadButtonLogPNLActionPerformed
-    cardLayoutMain.show(MainPanel, "RegisterPanel"); //Switch to Register Panel
+		cardLayoutMain.show(MainPanel, "RegisterPanel"); //Switch to Register Panel
         }//GEN-LAST:event_SignUpInsteadButtonLogPNLActionPerformed
 
         private void SignUpButtonRegPNLActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SignUpButtonRegPNLActionPerformed
-    // Sign In Logic
+		// Sign In Logic
 
-    ErrorTextRegPNL.setText("");
-    String firstname = FirstNameField.getText();
-    String surname = SurnameField.getText();
-    String username = UsernameFieldRegPNL.getText();
-    String email = EmailField.getText();
-    Date DOB = DOBPicker.getDate();
-    char[] password = PasswordFieldRegPNL.getPassword();
-    char[] repeatPassword = RepeatedPasswordField.getPassword();
+		ErrorTextRegPNL.setText("");
+		String firstname = FirstNameField.getText();
+		String surname = SurnameField.getText();
+		String username = UsernameFieldRegPNL.getText();
+		String email = EmailField.getText();
+		Date DOB = DOBPicker.getDate();
+		char[] password = PasswordFieldRegPNL.getPassword();
+		char[] repeatPassword = RepeatedPasswordField.getPassword();
 
-    char[] tempPassword = PasswordFieldRegPNL.getPassword();
-    String passwordStr = "";
+		char[] tempPassword = PasswordFieldRegPNL.getPassword();
+		String passwordStr = "";
 
-    User user = new User(0, email, DOB, firstname, surname);
-    UserCreds userCreds = new UserCreds(0, username, new String(password));
+		User user = new User(0, email, DOB, firstname, surname);
+		UserCreds userCreds = new UserCreds(0, username, new String(password));
 
-    for (int i = 0; i < tempPassword.length; i++) {
-      passwordStr = passwordStr + tempPassword[i];
-    }
+		for (int i = 0; i < tempPassword.length; i++) {
+			passwordStr = passwordStr + tempPassword[i];
+		}
 
-    int passScore = calcPassScore(passwordStr);
+		int passScore = calcPassScore(passwordStr);
 
-    Validator validator = new Validator(firstname, surname, username, email, DOB, password, repeatPassword, passScore);
-    String errorText = "";
+		Validator validator = new Validator(firstname, surname, username, email, DOB, password, repeatPassword, passScore);
+		String errorText = "";
 
-    UserManager userManager = new UserManager();
+		UserManager userManager = new UserManager();
 
-    // Use Validator
-    if (!validator.validateFirstname()) {
-      errorText = "Please Enter your First Name.";
-    } else if (!validator.validateFirstnameLength()) {
-      errorText = "First Name is too long. Must be 100 or less characters.";
-    } else if (!validator.validateSurname()) {
-      errorText = "Please Enter your Surname.";
-    } else if (!validator.validateSurnameLength()) {
-      errorText = "Surname is too long. Must be 100 or less characters.";
-    } else if (!validator.validateUsername()) {
-      errorText = "Username does not follow correct format. Check the help for more information.";
-    } else if (!validator.validateUsernameLength()) {
-      errorText = "Username is too long. Must be 25 or less characters.";
-    } else if (!validator.validateEmail()) {
-      errorText = "Not a valid Email";
-    } else if (!validator.validateEmailLength()) {
-      errorText = "Email is too long. Must be 255 or less characters.";
-    } else if (!validator.validateDOB()) {
-      errorText = "Please Select your date of Birth.";
-    } else if (!validator.validateDOBLogic()) {
-      errorText = "Date of birth is in the future.";
-    } else if (!validator.validatePasswordMatch()) {
-      errorText = "Passwords do not match.";
-    } else if (!validator.validatePasswordLength()) {
-      errorText = "Password is too short. Must be greater than 8 characters.";
-    } else if (!validator.validatePasswordStrength()) {
-      errorText = "Your password is not strong enough. Try adding numbers or special charaters.";
-    } else if (userManager.CheckForUser(username)) {
-      errorText = "Username is already taken.";
-    } else if (userManager.RegisterUser(user, userCreds)) {
-      cardLayoutMain.show(MainPanel, "LoginPanel");
-      JOptionPane.showMessageDialog(this,
-              "Successfully Registered ✔"
-              + "\nPlease Login"
-      );
-    }
+		// Use Validator
+		if (!validator.validateFirstname()) {
+			errorText = "Please Enter your First Name.";
+		} else if (!validator.validateFirstnameLength()) {
+			errorText = "First Name is too long. Must be 100 or less characters.";
+		} else if (!validator.validateSurname()) {
+			errorText = "Please Enter your Surname.";
+		} else if (!validator.validateSurnameLength()) {
+			errorText = "Surname is too long. Must be 100 or less characters.";
+		} else if (!validator.validateUsername()) {
+			errorText = "Username does not follow correct format. Check the help for more information.";
+		} else if (!validator.validateUsernameLength()) {
+			errorText = "Username is too long. Must be 25 or less characters.";
+		} else if (!validator.validateEmail()) {
+			errorText = "Not a valid Email";
+		} else if (!validator.validateEmailLength()) {
+			errorText = "Email is too long. Must be 255 or less characters.";
+		} else if (!validator.validateDOB()) {
+			errorText = "Please Select your date of Birth.";
+		} else if (!validator.validateDOBLogic()) {
+			errorText = "Date of birth is in the future.";
+		} else if (!validator.validatePasswordMatch()) {
+			errorText = "Passwords do not match.";
+		} else if (!validator.validatePasswordLength()) {
+			errorText = "Password is too short. Must be greater than 8 characters.";
+		} else if (!validator.validatePasswordStrength()) {
+			errorText = "Your password is not strong enough. Try adding numbers or special charaters.";
+		} else if (userManager.CheckForUser(username)) {
+			errorText = "Username is already taken.";
+		} else if (userManager.RegisterUser(user, userCreds)) {
+			cardLayoutMain.show(MainPanel, "LoginPanel");
+			JOptionPane.showMessageDialog(this,
+							"Successfully Registered ✔"
+							+ "\nPlease Login"
+			);
+		}
 
-    ErrorTextRegPNL.setText(errorText);
+		ErrorTextRegPNL.setText(errorText);
 
         }//GEN-LAST:event_SignUpButtonRegPNLActionPerformed
 
         private void LoginInsteadButtonRegPNLActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LoginInsteadButtonRegPNLActionPerformed
-    cardLayoutMain.show(MainPanel, "LoginPanel"); // Switch to Login Panel
+		cardLayoutMain.show(MainPanel, "LoginPanel"); // Switch to Login Panel
         }//GEN-LAST:event_LoginInsteadButtonRegPNLActionPerformed
 
   private void PasswordFieldRegPNLMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_PasswordFieldRegPNLMouseClicked
-    // TODO add your handling code here:
+		// TODO add your handling code here:
   }//GEN-LAST:event_PasswordFieldRegPNLMouseClicked
 
   private void PasswordFieldRegPNLKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_PasswordFieldRegPNLKeyTyped
-    char[] tempPassword = PasswordFieldRegPNL.getPassword();
-    String password = "";
+		char[] tempPassword = PasswordFieldRegPNL.getPassword();
+		String password = "";
 
-    for (int i = 0; i < tempPassword.length; i++) {
-      password = password + tempPassword[i];
-    }
+		for (int i = 0; i < tempPassword.length; i++) {
+			password = password + tempPassword[i];
+		}
 
-    password = password + evt.getKeyChar();
+		password = password + evt.getKeyChar();
 
-    int score = calcPassScore(password);
+		int score = calcPassScore(password);
 
-    if (score == 0) {
-      PasswordStrength.setValue(5);
-    } else if (score < 3) {
-      PasswordStrength.setValue(20);
-    } else if (score < 4) {
-      PasswordStrength.setValue(50);
-    } else if (score < 6) {
-      PasswordStrength.setValue(70);
-    } else {
-      PasswordStrength.setValue(100);
-    }
+		if (score == 0) {
+			PasswordStrength.setValue(5);
+		} else if (score < 3) {
+			PasswordStrength.setValue(20);
+		} else if (score < 4) {
+			PasswordStrength.setValue(50);
+		} else if (score < 6) {
+			PasswordStrength.setValue(70);
+		} else {
+			PasswordStrength.setValue(100);
+		}
 
   }//GEN-LAST:event_PasswordFieldRegPNLKeyTyped
 
   private void PasswordFieldRegPNLActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PasswordFieldRegPNLActionPerformed
-    // TODO add your handling code here:
+		// TODO add your handling code here:
   }//GEN-LAST:event_PasswordFieldRegPNLActionPerformed
 
   private void PasswordFieldRegPNLKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_PasswordFieldRegPNLKeyPressed
@@ -1160,48 +1161,48 @@ public class MainForm extends javax.swing.JFrame {
   }//GEN-LAST:event_PasswordFieldRegPNLPropertyChange
 
   private void NewProjectButtonPVActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NewProjectButtonPVActionPerformed
-    cardLayoutPV.show(CardPV, "NewProject");
+		cardLayoutPV.show(CardPV, "NewProject");
   }//GEN-LAST:event_NewProjectButtonPVActionPerformed
 
   private void CreateProjectBTNNPPVActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CreateProjectBTNNPPVActionPerformed
-    ProjectManager projectManager = new ProjectManager();
+		ProjectManager projectManager = new ProjectManager();
 
-    if (ProjectNameTXTNPPV.getText().equals("")) {
-      ErrorLabelNPPV.setText("Please Enter the Project Title");
-    } else if (ProjectDescriptionLabelNPPV.getText().equals("")) {
-      ErrorLabelNPPV.setText("Please Enter the Project Description");
-    } else if (ProjectNameTXTNPPV.getText().length() > 100) {
-      ErrorLabelNPPV.setText("Title is too long");
-    } else if (ProjectDescriptionLabelNPPV.getText().length() > 300) {
-      ErrorLabelNPPV.setText("Desription is too long");
-    } else if (projectManager.CreateProject(ProjectNameTXTNPPV.getText(), DesriptionTextAreaNPPV.getText(), currentUser)) {
-      cardLayoutPV.show(CardPV, "ProjectViewPV");
-      JOptionPane.showMessageDialog(this,
-              "Successfully Created Project ✔"
-              + "\nClick Refresh to see it"
-      );
-    }
+		if (ProjectNameTXTNPPV.getText().equals("")) {
+			ErrorLabelNPPV.setText("Please Enter the Project Title");
+		} else if (ProjectDescriptionLabelNPPV.getText().equals("")) {
+			ErrorLabelNPPV.setText("Please Enter the Project Description");
+		} else if (ProjectNameTXTNPPV.getText().length() > 100) {
+			ErrorLabelNPPV.setText("Title is too long");
+		} else if (ProjectDescriptionLabelNPPV.getText().length() > 300) {
+			ErrorLabelNPPV.setText("Desription is too long");
+		} else if (projectManager.CreateProject(ProjectNameTXTNPPV.getText(), DesriptionTextAreaNPPV.getText(), currentUser)) {
+			cardLayoutPV.show(CardPV, "ProjectViewPV");
+			JOptionPane.showMessageDialog(this,
+							"Successfully Created Project ✔"
+							+ "\nClick Refresh to see it"
+			);
+		}
   }//GEN-LAST:event_CreateProjectBTNNPPVActionPerformed
 
   private void RefreshButtonPVActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RefreshButtonPVActionPerformed
-    CardPV.repaint();
-    refreshProjectView();
-    CardPV.repaint();
+		CardPV.repaint();
+		refreshProjectView();
+		CardPV.repaint();
   }//GEN-LAST:event_RefreshButtonPVActionPerformed
 
   private void BackButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BackButtonActionPerformed
-    cardLayoutPV.show(CardPV, "NewProject");
-    refreshProjectView();
-    cardLayoutPV.show(CardPV, "ProjectViewPV");
+		cardLayoutPV.show(CardPV, "NewProject");
+		refreshProjectView();
+		cardLayoutPV.show(CardPV, "ProjectViewPV");
   }//GEN-LAST:event_BackButtonActionPerformed
 
   private void AccountSetButtonsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AccountSetButtonsActionPerformed
-    cardLayoutPV.show(CardPV, "AccountSettings");
+		cardLayoutPV.show(CardPV, "AccountSettings");
   }//GEN-LAST:event_AccountSetButtonsActionPerformed
 
   private void DeleteAccountButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DeleteAccountButtonActionPerformed
-    UserManager userManager = new UserManager();
-    userManager.deleteAccount(currentUsername);
+		UserManager userManager = new UserManager();
+		userManager.deleteAccount(currentUsername);
   }//GEN-LAST:event_DeleteAccountButtonActionPerformed
 
   private void ProjectViewCardPVComponentAdded(java.awt.event.ContainerEvent evt) {//GEN-FIRST:event_ProjectViewCardPVComponentAdded
@@ -1213,47 +1214,47 @@ public class MainForm extends javax.swing.JFrame {
   }//GEN-LAST:event_ProjectViewCardPVComponentShown
 
   private void AccounSettingsBackButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AccounSettingsBackButtonActionPerformed
-    refreshProjectView();
-    cardLayoutPV.show(CardPV, "ProjectViewPV");
+		refreshProjectView();
+		cardLayoutPV.show(CardPV, "ProjectViewPV");
   }//GEN-LAST:event_AccounSettingsBackButtonActionPerformed
 
-  /**
-   * @param args the command line arguments
-   */
-  public static void main(String args[]) {
-    /* Set the Nimbus look and feel */
-    //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-    /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+	/**
+	 * @param args the command line arguments
+	 */
+	public static void main(String args[]) {
+		/* Set the Nimbus look and feel */
+		//<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+		/* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
          * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html
-     */
-    try {
-      for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-        if ("Nimbus".equals(info.getName())) {
-          javax.swing.UIManager.setLookAndFeel(info.getClassName());
-          break;
-        }
-      }
-    } catch (ClassNotFoundException ex) {
-      java.util.logging.Logger.getLogger(MainForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-    } catch (InstantiationException ex) {
-      java.util.logging.Logger.getLogger(MainForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-    } catch (IllegalAccessException ex) {
-      java.util.logging.Logger.getLogger(MainForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-    } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-      java.util.logging.Logger.getLogger(MainForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-    }
-    //</editor-fold>
-    //</editor-fold>
-    //</editor-fold>
-    //</editor-fold>
+		 */
+		try {
+			for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+				if ("Nimbus".equals(info.getName())) {
+					javax.swing.UIManager.setLookAndFeel(info.getClassName());
+					break;
+				}
+			}
+		} catch (ClassNotFoundException ex) {
+			java.util.logging.Logger.getLogger(MainForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+		} catch (InstantiationException ex) {
+			java.util.logging.Logger.getLogger(MainForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+		} catch (IllegalAccessException ex) {
+			java.util.logging.Logger.getLogger(MainForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+		} catch (javax.swing.UnsupportedLookAndFeelException ex) {
+			java.util.logging.Logger.getLogger(MainForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+		}
+		//</editor-fold>
+		//</editor-fold>
+		//</editor-fold>
+		//</editor-fold>
 
-    /* Create and display the form */
-    java.awt.EventQueue.invokeLater(new Runnable() {
-      public void run() {
-        new MainForm().setVisible(true);
-      }
-    });
-  }
+		/* Create and display the form */
+		java.awt.EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				new MainForm().setVisible(true);
+			}
+		});
+	}
 
   // Variables declaration - do not modify//GEN-BEGIN:variables
   private javax.swing.JToggleButton AccounSettingsBackButton;

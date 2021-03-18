@@ -23,186 +23,198 @@ import javax.swing.UnsupportedLookAndFeelException;
  */
 public class ProjectTile extends javax.swing.JPanel {
 
-  private Project project;
+	private Project project;
+	private CardLayout cardLayout;
 
-  public ProjectTile(Project project) {
+	public ProjectTile(Project project) {
 
-    initComponents();
+		initComponents();
 
-    this.project = project;
+		this.project = project;
 
-    ProjectDescriptionTile.setBorder(null);
-    ProjectDescriptionTile.setBackground(null);
-    Color backColor = new Color(UIManager.getColor("RootPane.background").getRGB());
-    ProjectDescriptionTile.setBackground(backColor);
-    ProjectTitleTile.setText(project.getProjectTitle());
-    ProjectDescriptionTile.setText(project.getProjectDescription());
-  }
+		cardLayout = (CardLayout) this.pnlMain.getLayout();
 
-  @SuppressWarnings("unchecked")
+		txtaProjectDescriptionTile.setBorder(null);
+		txtaProjectDescriptionTile.setBackground(null);
+		Color backColor = new Color(UIManager.getColor("RootPane.background").getRGB());
+		txtaProjectDescriptionTile.setBackground(backColor);
+		lblProjectTitleTile.setText(project.getProjectTitle());
+		txtaProjectDescriptionTile.setText(project.getProjectDescription());
+	}
+
+	@SuppressWarnings("unchecked")
   // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
   private void initComponents() {
 
-    CardLayout = new javax.swing.JPanel();
-    View = new javax.swing.JPanel();
-    ProjectTitleTile = new javax.swing.JLabel();
-    ProjectDescriptionTile = new javax.swing.JTextArea();
-    OpenBTN = new javax.swing.JButton();
-    EditBTNView = new javax.swing.JButton();
-    DeleteBTN = new javax.swing.JButton();
-    EDIT = new javax.swing.JPanel();
-    jTextField1 = new javax.swing.JTextField();
-    jScrollPane1 = new javax.swing.JScrollPane();
-    jTextArea1 = new javax.swing.JTextArea();
-    SaveBTNEdit = new javax.swing.JButton();
+    pnlMain = new javax.swing.JPanel();
+    pnlView = new javax.swing.JPanel();
+    lblProjectTitleTile = new javax.swing.JLabel();
+    txtaProjectDescriptionTile = new javax.swing.JTextArea();
+    btnOpen = new javax.swing.JButton();
+    btnEdit = new javax.swing.JButton();
+    btnDelete = new javax.swing.JButton();
+    pnlEDIT = new javax.swing.JPanel();
+    txtfProjectTitleEdit = new javax.swing.JTextField();
+    spProjectDescriptionEdit = new javax.swing.JScrollPane();
+    txtaProjectDescriptionEdit = new javax.swing.JTextArea();
+    btnSaveEdit = new javax.swing.JButton();
 
     setBorder(new javax.swing.border.LineBorder(new java.awt.Color(153, 153, 153), 1, true));
 
-    CardLayout.setLayout(new java.awt.CardLayout());
+    pnlMain.setLayout(new java.awt.CardLayout());
 
-    ProjectTitleTile.setFont(new java.awt.Font("sansserif", 1, 18)); // NOI18N
+    lblProjectTitleTile.setFont(new java.awt.Font("sansserif", 1, 18)); // NOI18N
 
-    ProjectDescriptionTile.setEditable(false);
-    ProjectDescriptionTile.setColumns(20);
-    ProjectDescriptionTile.setLineWrap(true);
-    ProjectDescriptionTile.setRows(5);
-    ProjectDescriptionTile.setFocusable(false);
-    ProjectDescriptionTile.setPreferredSize(new java.awt.Dimension(100, 60));
+    txtaProjectDescriptionTile.setEditable(false);
+    txtaProjectDescriptionTile.setColumns(20);
+    txtaProjectDescriptionTile.setLineWrap(true);
+    txtaProjectDescriptionTile.setRows(5);
+    txtaProjectDescriptionTile.setFocusable(false);
+    txtaProjectDescriptionTile.setPreferredSize(new java.awt.Dimension(100, 60));
 
-    OpenBTN.setText("Open");
-    OpenBTN.addActionListener(new java.awt.event.ActionListener() {
+    btnOpen.setText("Open");
+    btnOpen.addActionListener(new java.awt.event.ActionListener() {
       public void actionPerformed(java.awt.event.ActionEvent evt) {
-        OpenBTNActionPerformed(evt);
+        btnOpenActionPerformed(evt);
       }
     });
 
-    EditBTNView.setText("Edit");
-
-    DeleteBTN.setText("Delete");
-    DeleteBTN.addActionListener(new java.awt.event.ActionListener() {
+    btnEdit.setText("Edit");
+    btnEdit.addActionListener(new java.awt.event.ActionListener() {
       public void actionPerformed(java.awt.event.ActionEvent evt) {
-        DeleteBTNActionPerformed(evt);
+        btnEditActionPerformed(evt);
       }
     });
 
-    javax.swing.GroupLayout ViewLayout = new javax.swing.GroupLayout(View);
-    View.setLayout(ViewLayout);
-    ViewLayout.setHorizontalGroup(
-      ViewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-      .addGroup(ViewLayout.createSequentialGroup()
+    btnDelete.setText("Delete");
+    btnDelete.addActionListener(new java.awt.event.ActionListener() {
+      public void actionPerformed(java.awt.event.ActionEvent evt) {
+        btnDeleteActionPerformed(evt);
+      }
+    });
+
+    javax.swing.GroupLayout pnlViewLayout = new javax.swing.GroupLayout(pnlView);
+    pnlView.setLayout(pnlViewLayout);
+    pnlViewLayout.setHorizontalGroup(
+      pnlViewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+      .addGroup(pnlViewLayout.createSequentialGroup()
         .addContainerGap()
-        .addGroup(ViewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-          .addComponent(ProjectDescriptionTile, javax.swing.GroupLayout.PREFERRED_SIZE, 353, javax.swing.GroupLayout.PREFERRED_SIZE)
-          .addComponent(ProjectTitleTile, javax.swing.GroupLayout.PREFERRED_SIZE, 353, javax.swing.GroupLayout.PREFERRED_SIZE))
+        .addGroup(pnlViewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+          .addComponent(txtaProjectDescriptionTile, javax.swing.GroupLayout.PREFERRED_SIZE, 353, javax.swing.GroupLayout.PREFERRED_SIZE)
+          .addComponent(lblProjectTitleTile, javax.swing.GroupLayout.PREFERRED_SIZE, 353, javax.swing.GroupLayout.PREFERRED_SIZE))
         .addContainerGap(34, Short.MAX_VALUE))
-      .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, ViewLayout.createSequentialGroup()
+      .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlViewLayout.createSequentialGroup()
         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        .addComponent(DeleteBTN)
+        .addComponent(btnDelete)
         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-        .addComponent(EditBTNView)
+        .addComponent(btnEdit)
         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-        .addComponent(OpenBTN)
+        .addComponent(btnOpen)
         .addGap(16, 16, 16))
     );
-    ViewLayout.setVerticalGroup(
-      ViewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-      .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, ViewLayout.createSequentialGroup()
+    pnlViewLayout.setVerticalGroup(
+      pnlViewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+      .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlViewLayout.createSequentialGroup()
         .addGap(21, 21, 21)
-        .addComponent(ProjectTitleTile, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+        .addComponent(lblProjectTitleTile, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-        .addComponent(ProjectDescriptionTile, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
+        .addComponent(txtaProjectDescriptionTile, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-        .addGroup(ViewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-          .addComponent(OpenBTN)
-          .addComponent(EditBTNView)
-          .addComponent(DeleteBTN))
+        .addGroup(pnlViewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+          .addComponent(btnOpen)
+          .addComponent(btnEdit)
+          .addComponent(btnDelete))
         .addContainerGap(23, Short.MAX_VALUE))
     );
 
-    CardLayout.add(View, "card2");
+    pnlMain.add(pnlView, "card2");
 
-    jTextArea1.setColumns(20);
-    jTextArea1.setRows(5);
-    jScrollPane1.setViewportView(jTextArea1);
+    txtaProjectDescriptionEdit.setColumns(20);
+    txtaProjectDescriptionEdit.setRows(5);
+    spProjectDescriptionEdit.setViewportView(txtaProjectDescriptionEdit);
 
-    SaveBTNEdit.setText("Save");
-    SaveBTNEdit.addActionListener(new java.awt.event.ActionListener() {
+    btnSaveEdit.setText("Save");
+    btnSaveEdit.addActionListener(new java.awt.event.ActionListener() {
       public void actionPerformed(java.awt.event.ActionEvent evt) {
-        SaveBTNEditActionPerformed(evt);
+        btnSaveEditActionPerformed(evt);
       }
     });
 
-    javax.swing.GroupLayout EDITLayout = new javax.swing.GroupLayout(EDIT);
-    EDIT.setLayout(EDITLayout);
-    EDITLayout.setHorizontalGroup(
-      EDITLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-      .addGroup(EDITLayout.createSequentialGroup()
+    javax.swing.GroupLayout pnlEDITLayout = new javax.swing.GroupLayout(pnlEDIT);
+    pnlEDIT.setLayout(pnlEDITLayout);
+    pnlEDITLayout.setHorizontalGroup(
+      pnlEDITLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+      .addGroup(pnlEDITLayout.createSequentialGroup()
         .addGap(23, 23, 23)
-        .addGroup(EDITLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-          .addComponent(jTextField1)
-          .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 314, Short.MAX_VALUE))
+        .addGroup(pnlEDITLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+          .addComponent(txtfProjectTitleEdit)
+          .addComponent(spProjectDescriptionEdit, javax.swing.GroupLayout.DEFAULT_SIZE, 314, Short.MAX_VALUE))
         .addContainerGap(56, Short.MAX_VALUE))
-      .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, EDITLayout.createSequentialGroup()
+      .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlEDITLayout.createSequentialGroup()
         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        .addComponent(SaveBTNEdit)
+        .addComponent(btnSaveEdit)
         .addGap(21, 21, 21))
     );
-    EDITLayout.setVerticalGroup(
-      EDITLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-      .addGroup(EDITLayout.createSequentialGroup()
+    pnlEDITLayout.setVerticalGroup(
+      pnlEDITLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+      .addGroup(pnlEDITLayout.createSequentialGroup()
         .addGap(17, 17, 17)
-        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+        .addComponent(txtfProjectTitleEdit, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+        .addComponent(spProjectDescriptionEdit, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-        .addComponent(SaveBTNEdit)
-        .addContainerGap(10, Short.MAX_VALUE))
+        .addComponent(btnSaveEdit)
+        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
     );
 
-    CardLayout.add(EDIT, "card3");
+    pnlMain.add(pnlEDIT, "card3");
 
     javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
     this.setLayout(layout);
     layout.setHorizontalGroup(
       layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-      .addComponent(CardLayout, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+      .addComponent(pnlMain, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
     );
     layout.setVerticalGroup(
       layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-      .addComponent(CardLayout, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+      .addComponent(pnlMain, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
     );
   }// </editor-fold>//GEN-END:initComponents
 
-  private void OpenBTNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_OpenBTNActionPerformed
+  private void btnOpenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOpenActionPerformed
 
-  }//GEN-LAST:event_OpenBTNActionPerformed
+  }//GEN-LAST:event_btnOpenActionPerformed
 
-  private void DeleteBTNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DeleteBTNActionPerformed
-    ProjectManager projectManager = new ProjectManager();
-    projectManager.DeleteProject(project);
+  private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
+		ProjectManager projectManager = new ProjectManager();
+		projectManager.DeleteProject(project);
 
-    CardLayout cardLayout = (CardLayout) MainForm.CardPV.getLayout();
-    cardLayout.show(MainForm.CardPV, "ProjectViewPV");
+		CardLayout cardLayout = (CardLayout) MainForm.CardPV.getLayout();
+		cardLayout.show(MainForm.CardPV, "ProjectViewPV");
 
-    JOptionPane.showMessageDialog(MainForm.CardPV, "Project Deleted");
-  }//GEN-LAST:event_DeleteBTNActionPerformed
+		JOptionPane.showMessageDialog(MainForm.CardPV, "Project Deleted");
+  }//GEN-LAST:event_btnDeleteActionPerformed
 
-  private void SaveBTNEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SaveBTNEditActionPerformed
+  private void btnSaveEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveEditActionPerformed
 
-  }//GEN-LAST:event_SaveBTNEditActionPerformed
+  }//GEN-LAST:event_btnSaveEditActionPerformed
+
+        private void btnEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditActionPerformed
+
+        }//GEN-LAST:event_btnEditActionPerformed
 
   // Variables declaration - do not modify//GEN-BEGIN:variables
-  private javax.swing.JPanel CardLayout;
-  private javax.swing.JButton DeleteBTN;
-  private javax.swing.JPanel EDIT;
-  private javax.swing.JButton EditBTNView;
-  private javax.swing.JButton OpenBTN;
-  private javax.swing.JTextArea ProjectDescriptionTile;
-  private javax.swing.JLabel ProjectTitleTile;
-  private javax.swing.JButton SaveBTNEdit;
-  private javax.swing.JPanel View;
-  private javax.swing.JScrollPane jScrollPane1;
-  private javax.swing.JTextArea jTextArea1;
-  private javax.swing.JTextField jTextField1;
+  private javax.swing.JButton btnDelete;
+  private javax.swing.JButton btnEdit;
+  private javax.swing.JButton btnOpen;
+  private javax.swing.JButton btnSaveEdit;
+  private javax.swing.JLabel lblProjectTitleTile;
+  private javax.swing.JPanel pnlEDIT;
+  private javax.swing.JPanel pnlMain;
+  private javax.swing.JPanel pnlView;
+  private javax.swing.JScrollPane spProjectDescriptionEdit;
+  private javax.swing.JTextArea txtaProjectDescriptionEdit;
+  private javax.swing.JTextArea txtaProjectDescriptionTile;
+  private javax.swing.JTextField txtfProjectTitleEdit;
   // End of variables declaration//GEN-END:variables
 }
