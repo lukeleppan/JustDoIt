@@ -32,9 +32,12 @@ public class MainForm extends javax.swing.JFrame {
 
 	private void refreshProjectView() {  //Loads Project Components for Project View
 		ScrollViewPV.removeAll();
+		ScrollViewPV.invalidate();
+		ScrollViewPV.validate();
+		ScrollViewPV.repaint();
 		ProjectManager projectManager = new ProjectManager();
 		List<Project> projects = projectManager.GetUserProjects(currentUser);
-		Dimension preferredSize = new Dimension(818, 174 * projects.size() + 10);
+		Dimension preferredSize = new Dimension(818, 202 * projects.size() + 10);
 		ScrollViewPV.setPreferredSize(preferredSize);
 		ProjectScrollViewPV.getVerticalScrollBar().setUnitIncrement(16);
 		ProjectScrollViewPV.getVerticalScrollBar().setAutoscrolls(false);
@@ -49,6 +52,11 @@ public class MainForm extends javax.swing.JFrame {
 
 			ScrollViewPV.add(projectTile);
 		}
+
+		ScrollViewPV.invalidate();
+		ScrollViewPV.validate();
+		ScrollViewPV.repaint();
+		ProjectScrollViewPV.getVerticalScrollBar().setValue(0);
 	}
 
 	private void setAccountDetails() {  // Sets the current users details
@@ -1177,6 +1185,7 @@ public class MainForm extends javax.swing.JFrame {
 			ErrorLabelNPPV.setText("Desription is too long");
 		} else if (projectManager.CreateProject(ProjectNameTXTNPPV.getText(), DesriptionTextAreaNPPV.getText(), currentUser)) {
 			cardLayoutPV.show(CardPV, "ProjectViewPV");
+			refreshProjectView();
 			JOptionPane.showMessageDialog(this,
 							"Successfully Created Project ✔"
 							+ "\nClick Refresh to see it"
