@@ -1,22 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 
 <Form version="1.3" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JFrameFormInfo">
-  <NonVisualComponents>
-    <Menu class="javax.swing.JMenuBar" name="MenuBar">
-      <SubComponents>
-        <Menu class="javax.swing.JMenu" name="jMenu1">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="File"/>
-          </Properties>
-        </Menu>
-        <Menu class="javax.swing.JMenu" name="jMenu2">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Edit"/>
-          </Properties>
-        </Menu>
-      </SubComponents>
-    </Menu>
-  </NonVisualComponents>
   <Properties>
     <Property name="defaultCloseOperation" type="int" value="3"/>
     <Property name="title" type="java.lang.String" value="Just Do It"/>
@@ -26,7 +10,6 @@
     <Property name="resizable" type="boolean" value="false"/>
   </Properties>
   <SyntheticProperties>
-    <SyntheticProperty name="menuBar" type="java.lang.String" value="MenuBar"/>
     <SyntheticProperty name="formSizePolicy" type="int" value="1"/>
     <SyntheticProperty name="generateCenter" type="boolean" value="false"/>
   </SyntheticProperties>
@@ -45,21 +28,21 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Component id="MainPanel" alignment="0" max="32767" attributes="0"/>
+          <Component id="pnlMain" alignment="0" max="32767" attributes="0"/>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Component id="MainPanel" alignment="0" max="32767" attributes="0"/>
+          <Component id="pnlMain" alignment="0" max="32767" attributes="0"/>
       </Group>
     </DimensionLayout>
   </Layout>
   <SubComponents>
-    <Container class="javax.swing.JPanel" name="MainPanel">
+    <Container class="javax.swing.JPanel" name="pnlMain">
 
       <Layout class="org.netbeans.modules.form.compat2.layouts.DesignCardLayout"/>
       <SubComponents>
-        <Container class="javax.swing.JPanel" name="InitialPanel">
+        <Container class="javax.swing.JPanel" name="pnlInitial">
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignCardLayout" value="org.netbeans.modules.form.compat2.layouts.DesignCardLayout$CardConstraintsDescription">
               <CardConstraints cardName="InitialPanel"/>
@@ -71,23 +54,23 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" attributes="0">
                       <EmptySpace min="-2" pref="191" max="-2" attributes="0"/>
-                      <Component id="jPanel1" min="-2" max="-2" attributes="0"/>
+                      <Component id="pnlInitialContainer" min="-2" max="-2" attributes="0"/>
                       <EmptySpace pref="220" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" alignment="0" attributes="0">
+                  <Group type="102" attributes="0">
                       <EmptySpace min="-2" pref="130" max="-2" attributes="0"/>
-                      <Component id="jPanel1" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace pref="152" max="32767" attributes="0"/>
+                      <Component id="pnlInitialContainer" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace pref="175" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
           </Layout>
           <SubComponents>
-            <Container class="javax.swing.JPanel" name="jPanel1">
+            <Container class="javax.swing.JPanel" name="pnlInitialContainer">
 
               <Layout>
                 <DimensionLayout dim="0">
@@ -96,11 +79,11 @@
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" alignment="0" attributes="0">
                                   <EmptySpace min="-2" pref="83" max="-2" attributes="0"/>
-                                  <Component id="InitTitlePNL" min="-2" max="-2" attributes="0"/>
+                                  <Component id="pnlTitleContainer" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <Group type="102" alignment="0" attributes="0">
                                   <EmptySpace min="-2" pref="72" max="-2" attributes="0"/>
-                                  <Component id="jPanel3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="pnlButtonContainer" min="-2" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                           <EmptySpace pref="31" max="32767" attributes="0"/>
@@ -111,28 +94,28 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
-                          <Component id="InitTitlePNL" min="-2" max="-2" attributes="0"/>
+                          <Component id="pnlTitleContainer" min="-2" max="-2" attributes="0"/>
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                          <Component id="jPanel3" min="-2" max="-2" attributes="0"/>
+                          <Component id="pnlButtonContainer" min="-2" max="-2" attributes="0"/>
                           <EmptySpace pref="70" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
               </Layout>
               <SubComponents>
-                <Container class="javax.swing.JPanel" name="InitTitlePNL">
+                <Container class="javax.swing.JPanel" name="pnlTitleContainer">
 
                   <Layout>
                     <DimensionLayout dim="0">
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="0" attributes="0">
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="Welcome1Text" min="-2" pref="204" max="-2" attributes="0"/>
+                              <Component id="lblTitle" min="-2" pref="204" max="-2" attributes="0"/>
                               <EmptySpace max="32767" attributes="0"/>
                           </Group>
                           <Group type="102" alignment="1" attributes="0">
                               <EmptySpace pref="65" max="32767" attributes="0"/>
-                              <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
+                              <Component id="lblSubtitle" min="-2" max="-2" attributes="0"/>
                               <EmptySpace min="-2" pref="47" max="-2" attributes="0"/>
                           </Group>
                       </Group>
@@ -140,16 +123,16 @@
                     <DimensionLayout dim="1">
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="0" attributes="0">
-                              <Component id="Welcome1Text" min="-2" max="-2" attributes="0"/>
+                              <Component id="lblTitle" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="32767" attributes="0"/>
-                              <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
+                              <Component id="lblSubtitle" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
                   </Layout>
                   <SubComponents>
-                    <Component class="javax.swing.JLabel" name="Welcome1Text">
+                    <Component class="javax.swing.JLabel" name="lblTitle">
                       <Properties>
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                           <Font name="Fredoka One" size="36" style="1"/>
@@ -157,7 +140,7 @@
                         <Property name="text" type="java.lang.String" value="Just Do It"/>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JLabel" name="jLabel1">
+                    <Component class="javax.swing.JLabel" name="lblSubtitle">
                       <Properties>
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                           <Font name="Arial" size="24" style="0"/>
@@ -167,7 +150,7 @@
                     </Component>
                   </SubComponents>
                 </Container>
-                <Container class="javax.swing.JPanel" name="jPanel3">
+                <Container class="javax.swing.JPanel" name="pnlButtonContainer">
 
                   <Layout>
                     <DimensionLayout dim="0">
@@ -175,8 +158,8 @@
                           <Group type="102" attributes="0">
                               <EmptySpace min="-2" pref="52" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="2" attributes="0">
-                                  <Component id="SignUpButton" alignment="2" pref="164" max="32767" attributes="0"/>
-                                  <Component id="SignInButtonPNL" alignment="2" max="32767" attributes="0"/>
+                                  <Component id="btnSignUp" alignment="2" pref="164" max="32767" attributes="0"/>
+                                  <Component id="btnSignIn" alignment="2" max="32767" attributes="0"/>
                               </Group>
                               <EmptySpace min="-2" pref="73" max="-2" attributes="0"/>
                           </Group>
@@ -185,16 +168,16 @@
                     <DimensionLayout dim="1">
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="0" attributes="0">
-                              <Component id="SignUpButton" min="-2" pref="42" max="-2" attributes="0"/>
+                              <Component id="btnSignUp" min="-2" pref="42" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="SignInButtonPNL" min="-2" pref="42" max="-2" attributes="0"/>
+                              <Component id="btnSignIn" min="-2" pref="42" max="-2" attributes="0"/>
                               <EmptySpace min="0" pref="16" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
                   </Layout>
                   <SubComponents>
-                    <Component class="javax.swing.JButton" name="SignUpButton">
+                    <Component class="javax.swing.JButton" name="btnSignUp">
                       <Properties>
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                           <Font name="SansSerif" size="15" style="1"/>
@@ -206,10 +189,10 @@
                         <Property name="toolTipText" type="java.lang.String" value="Click To Sign up"/>
                       </Properties>
                       <Events>
-                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="SignUpButtonActionPerformed"/>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnSignUpActionPerformed"/>
                       </Events>
                     </Component>
-                    <Component class="javax.swing.JButton" name="SignInButtonPNL">
+                    <Component class="javax.swing.JButton" name="btnSignIn">
                       <Properties>
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                           <Font name="SansSerif" size="15" style="1"/>
@@ -221,7 +204,7 @@
                         <Property name="toolTipText" type="java.lang.String" value="Click To Sign in"/>
                       </Properties>
                       <Events>
-                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="SignInButtonPNLActionPerformed"/>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnSignInActionPerformed"/>
                       </Events>
                     </Component>
                   </SubComponents>
@@ -230,7 +213,7 @@
             </Container>
           </SubComponents>
         </Container>
-        <Container class="javax.swing.JPanel" name="RegisterPanel">
+        <Container class="javax.swing.JPanel" name="pnlSignUp">
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignCardLayout" value="org.netbeans.modules.form.compat2.layouts.DesignCardLayout$CardConstraintsDescription">
               <CardConstraints cardName="RegisterPanel"/>
@@ -242,7 +225,7 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="1" attributes="0">
                       <EmptySpace pref="135" max="32767" attributes="0"/>
-                      <Component id="RegPNL" min="-2" max="-2" attributes="0"/>
+                      <Component id="pnlSignUpContainer" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="121" max="-2" attributes="0"/>
                   </Group>
               </Group>
@@ -251,14 +234,14 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
-                      <Component id="RegPNL" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace pref="83" max="32767" attributes="0"/>
+                      <Component id="pnlSignUpContainer" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace pref="104" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
           </Layout>
           <SubComponents>
-            <Container class="javax.swing.JPanel" name="RegPNL">
+            <Container class="javax.swing.JPanel" name="pnlSignUpContainer">
               <Properties>
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                   <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
@@ -268,7 +251,7 @@
                   </Border>
                 </Property>
                 <Property name="nextFocusableComponent" type="java.awt.Component" editor="org.netbeans.modules.form.ComponentChooserEditor">
-                  <ComponentRef name="UsernameFieldRegPNL"/>
+                  <ComponentRef name="txtUsernameSignUp"/>
                 </Property>
               </Properties>
 
@@ -279,35 +262,35 @@
                           <Group type="103" groupAlignment="0" max="-2" attributes="0">
                               <Group type="102" attributes="0">
                                   <EmptySpace min="-2" pref="147" max="-2" attributes="0"/>
-                                  <Component id="LoginInsteadButtonRegPNL" min="-2" max="-2" attributes="0"/>
+                                  <Component id="btnSignUpInsteadSignUp" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="SignUpButtonRegPNL" min="-2" pref="124" max="-2" attributes="0"/>
+                                  <Component id="btnSignUpSignUp" min="-2" pref="124" max="-2" attributes="0"/>
                               </Group>
                               <Group type="102" attributes="0">
                                   <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="ErrorTextRegPNL" alignment="1" max="32767" attributes="0"/>
+                                      <Component id="lblErrorSignUp" alignment="1" max="32767" attributes="0"/>
                                       <Group type="102" attributes="0">
                                           <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                              <Component id="UsernameText3" alignment="0" min="-2" max="-2" attributes="0"/>
-                                              <Component id="UsernameText1" alignment="0" min="-2" max="-2" attributes="0"/>
-                                              <Component id="UsernameText5" alignment="0" min="-2" max="-2" attributes="0"/>
-                                              <Component id="UsernameText6" alignment="0" min="-2" max="-2" attributes="0"/>
-                                              <Component id="UsernameFieldRegPNL" alignment="0" max="32767" attributes="0"/>
-                                              <Component id="SurnameField" alignment="0" max="32767" attributes="0"/>
-                                              <Component id="FirstNameField" alignment="0" max="32767" attributes="0"/>
-                                              <Component id="EmailField" alignment="0" min="-2" pref="239" max="-2" attributes="0"/>
+                                              <Component id="lblEmailSignUp" alignment="0" min="-2" max="-2" attributes="0"/>
+                                              <Component id="lblUsernameSignUp" alignment="0" min="-2" max="-2" attributes="0"/>
+                                              <Component id="lblSurnameSignUp" alignment="0" min="-2" max="-2" attributes="0"/>
+                                              <Component id="lblFirstNameSignUp" alignment="0" min="-2" max="-2" attributes="0"/>
+                                              <Component id="txtUsernameSignUp" alignment="0" max="32767" attributes="0"/>
+                                              <Component id="txtSurnameSignUp" alignment="0" max="32767" attributes="0"/>
+                                              <Component id="txtFirstNameSignUp" alignment="0" max="32767" attributes="0"/>
+                                              <Component id="txtEmailSignUp" alignment="0" min="-2" pref="239" max="-2" attributes="0"/>
                                           </Group>
                                           <EmptySpace min="-2" pref="43" max="-2" attributes="0"/>
                                           <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                              <Component id="UsernameText8" alignment="0" min="-2" max="-2" attributes="0"/>
-                                              <Component id="UsernameText4" alignment="0" min="-2" max="-2" attributes="0"/>
-                                              <Component id="UsernameText7" alignment="0" min="-2" max="-2" attributes="0"/>
-                                              <Component id="PasswordFieldRegPNL" alignment="0" max="32767" attributes="0"/>
-                                              <Component id="RepeatedPasswordField" alignment="0" pref="209" max="32767" attributes="0"/>
-                                              <Component id="PasswordStrength" pref="209" max="32767" attributes="0"/>
-                                              <Component id="PassStrengthText" min="-2" max="-2" attributes="0"/>
-                                              <Component id="DOBPicker" alignment="0" max="32767" attributes="0"/>
+                                              <Component id="lblConfirmPasswordSignUp" alignment="0" min="-2" max="-2" attributes="0"/>
+                                              <Component id="lblPasswordSignUp" alignment="0" min="-2" max="-2" attributes="0"/>
+                                              <Component id="lblDOBSignUP" alignment="0" min="-2" max="-2" attributes="0"/>
+                                              <Component id="txtPasswordSignUp" alignment="0" max="32767" attributes="0"/>
+                                              <Component id="txtConfirmPasswordSignUp" alignment="0" pref="209" max="32767" attributes="0"/>
+                                              <Component id="pbarPasswordStrengthSignUp" pref="209" max="32767" attributes="0"/>
+                                              <Component id="lblPasswordStrengthSignUp" min="-2" max="-2" attributes="0"/>
+                                              <Component id="dpDOBSignUp" alignment="0" max="32767" attributes="0"/>
                                           </Group>
                                       </Group>
                                   </Group>
@@ -323,51 +306,51 @@
                           <EmptySpace min="-2" pref="16" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" alignment="0" attributes="0">
-                                  <Component id="UsernameText6" min="-2" max="-2" attributes="0"/>
+                                  <Component id="lblFirstNameSignUp" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="FirstNameField" min="-2" pref="32" max="-2" attributes="0"/>
+                                  <Component id="txtFirstNameSignUp" min="-2" pref="32" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="UsernameText5" min="-2" max="-2" attributes="0"/>
+                                  <Component id="lblSurnameSignUp" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="SurnameField" min="-2" pref="32" max="-2" attributes="0"/>
+                                  <Component id="txtSurnameSignUp" min="-2" pref="32" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="UsernameText1" min="-2" max="-2" attributes="0"/>
+                                  <Component id="lblUsernameSignUp" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <Group type="102" alignment="0" attributes="0">
-                                  <Component id="UsernameText7" min="-2" max="-2" attributes="0"/>
+                                  <Component id="lblDOBSignUP" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace min="-2" pref="9" max="-2" attributes="0"/>
-                                  <Component id="DOBPicker" min="-2" pref="37" max="-2" attributes="0"/>
+                                  <Component id="dpDOBSignUp" min="-2" pref="37" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="UsernameText4" min="-2" max="-2" attributes="0"/>
+                                  <Component id="lblPasswordSignUp" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="PasswordFieldRegPNL" min="-2" pref="38" max="-2" attributes="0"/>
+                                  <Component id="txtPasswordSignUp" min="-2" pref="38" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="PassStrengthText" min="-2" max="-2" attributes="0"/>
+                                  <Component id="lblPasswordStrengthSignUp" min="-2" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" max="-2" attributes="0">
                               <Group type="102" attributes="0">
-                                  <Component id="UsernameFieldRegPNL" min="-2" pref="32" max="-2" attributes="0"/>
+                                  <Component id="txtUsernameSignUp" min="-2" pref="32" max="-2" attributes="0"/>
                                   <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
-                                  <Component id="UsernameText3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="lblEmailSignUp" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="EmailField" min="-2" pref="32" max="-2" attributes="0"/>
+                                  <Component id="txtEmailSignUp" min="-2" pref="32" max="-2" attributes="0"/>
                               </Group>
                               <Group type="102" attributes="0">
-                                  <Component id="PasswordStrength" min="-2" pref="11" max="-2" attributes="0"/>
+                                  <Component id="pbarPasswordStrengthSignUp" min="-2" pref="11" max="-2" attributes="0"/>
                                   <EmptySpace max="32767" attributes="0"/>
-                                  <Component id="UsernameText8" min="-2" max="-2" attributes="0"/>
+                                  <Component id="lblConfirmPasswordSignUp" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="RepeatedPasswordField" min="-2" pref="38" max="-2" attributes="0"/>
+                                  <Component id="txtConfirmPasswordSignUp" min="-2" pref="38" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
-                          <Component id="ErrorTextRegPNL" min="-2" pref="57" max="-2" attributes="0"/>
+                          <Component id="lblErrorSignUp" min="-2" pref="57" max="-2" attributes="0"/>
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                              <Component id="LoginInsteadButtonRegPNL" max="32767" attributes="0"/>
-                              <Component id="SignUpButtonRegPNL" min="-2" pref="41" max="-2" attributes="0"/>
+                              <Component id="btnSignUpInsteadSignUp" max="32767" attributes="0"/>
+                              <Component id="btnSignUpSignUp" min="-2" pref="41" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace pref="32" max="32767" attributes="0"/>
                       </Group>
@@ -375,7 +358,45 @@
                 </DimensionLayout>
               </Layout>
               <SubComponents>
-                <Component class="javax.swing.JLabel" name="UsernameText1">
+                <Component class="javax.swing.JLabel" name="lblFirstNameSignUp">
+                  <Properties>
+                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                      <Font name="SansSerif" size="18" style="0"/>
+                    </Property>
+                    <Property name="labelFor" type="java.awt.Component" editor="org.netbeans.modules.form.ComponentChooserEditor">
+                      <ComponentRef name="txtFirstNameSignUp"/>
+                    </Property>
+                    <Property name="text" type="java.lang.String" value="First Name"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JTextField" name="txtFirstNameSignUp">
+                  <Properties>
+                    <Property name="toolTipText" type="java.lang.String" value="Enter First Name"/>
+                    <Property name="nextFocusableComponent" type="java.awt.Component" editor="org.netbeans.modules.form.ComponentChooserEditor">
+                      <ComponentRef name="txtSurnameSignUp"/>
+                    </Property>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JLabel" name="lblSurnameSignUp">
+                  <Properties>
+                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                      <Font name="SansSerif" size="18" style="0"/>
+                    </Property>
+                    <Property name="labelFor" type="java.awt.Component" editor="org.netbeans.modules.form.ComponentChooserEditor">
+                      <ComponentRef name="txtSurnameSignUp"/>
+                    </Property>
+                    <Property name="text" type="java.lang.String" value="Surname"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JTextField" name="txtSurnameSignUp">
+                  <Properties>
+                    <Property name="toolTipText" type="java.lang.String" value="Enter Surname"/>
+                    <Property name="nextFocusableComponent" type="java.awt.Component" editor="org.netbeans.modules.form.ComponentChooserEditor">
+                      <ComponentRef name="txtUsernameSignUp"/>
+                    </Property>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JLabel" name="lblUsernameSignUp">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="SansSerif" size="18" style="0"/>
@@ -386,80 +407,31 @@
                     <Property name="text" type="java.lang.String" value="Username"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JTextField" name="UsernameFieldRegPNL">
+                <Component class="javax.swing.JTextField" name="txtUsernameSignUp">
                   <Properties>
                     <Property name="toolTipText" type="java.lang.String" value="Enter Username"/>
                     <Property name="nextFocusableComponent" type="java.awt.Component" editor="org.netbeans.modules.form.ComponentChooserEditor">
-                      <ComponentRef name="EmailField"/>
+                      <ComponentRef name="txtEmailSignUp"/>
                     </Property>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JLabel" name="UsernameText3">
+                <Component class="javax.swing.JLabel" name="lblEmailSignUp">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="SansSerif" size="18" style="0"/>
                     </Property>
                     <Property name="labelFor" type="java.awt.Component" editor="org.netbeans.modules.form.ComponentChooserEditor">
-                      <ComponentRef name="EmailField"/>
+                      <ComponentRef name="txtEmailSignUp"/>
                     </Property>
                     <Property name="text" type="java.lang.String" value="Email"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JTextField" name="EmailField">
+                <Component class="javax.swing.JTextField" name="txtEmailSignUp">
                   <Properties>
                     <Property name="toolTipText" type="java.lang.String" value="Enter Email"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JLabel" name="UsernameText4">
-                  <Properties>
-                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                      <Font name="SansSerif" size="18" style="0"/>
-                    </Property>
-                    <Property name="labelFor" type="java.awt.Component" editor="org.netbeans.modules.form.ComponentChooserEditor">
-                      <ComponentRef name="PasswordFieldRegPNL"/>
-                    </Property>
-                    <Property name="text" type="java.lang.String" value="Password"/>
-                  </Properties>
-                </Component>
-                <Component class="javax.swing.JLabel" name="UsernameText5">
-                  <Properties>
-                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                      <Font name="SansSerif" size="18" style="0"/>
-                    </Property>
-                    <Property name="labelFor" type="java.awt.Component" editor="org.netbeans.modules.form.ComponentChooserEditor">
-                      <ComponentRef name="SurnameField"/>
-                    </Property>
-                    <Property name="text" type="java.lang.String" value="Surname"/>
-                  </Properties>
-                </Component>
-                <Component class="javax.swing.JTextField" name="SurnameField">
-                  <Properties>
-                    <Property name="toolTipText" type="java.lang.String" value="Enter Surname"/>
-                    <Property name="nextFocusableComponent" type="java.awt.Component" editor="org.netbeans.modules.form.ComponentChooserEditor">
-                      <ComponentRef name="UsernameFieldRegPNL"/>
-                    </Property>
-                  </Properties>
-                </Component>
-                <Component class="javax.swing.JTextField" name="FirstNameField">
-                  <Properties>
-                    <Property name="toolTipText" type="java.lang.String" value="Enter First Name"/>
-                    <Property name="nextFocusableComponent" type="java.awt.Component" editor="org.netbeans.modules.form.ComponentChooserEditor">
-                      <ComponentRef name="SurnameField"/>
-                    </Property>
-                  </Properties>
-                </Component>
-                <Component class="javax.swing.JLabel" name="UsernameText6">
-                  <Properties>
-                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                      <Font name="SansSerif" size="18" style="0"/>
-                    </Property>
-                    <Property name="labelFor" type="java.awt.Component" editor="org.netbeans.modules.form.ComponentChooserEditor">
-                      <ComponentRef name="FirstNameField"/>
-                    </Property>
-                    <Property name="text" type="java.lang.String" value="First Name"/>
-                  </Properties>
-                </Component>
-                <Component class="javax.swing.JLabel" name="UsernameText7">
+                <Component class="javax.swing.JLabel" name="lblDOBSignUP">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="SansSerif" size="18" style="0"/>
@@ -467,38 +439,72 @@
                     <Property name="text" type="java.lang.String" value="Date Of Birth"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JPasswordField" name="PasswordFieldRegPNL">
+                <Component class="org.jdesktop.swingx.JXDatePicker" name="dpDOBSignUp">
+                  <Properties>
+                    <Property name="toolTipText" type="java.lang.String" value="Enter Date of Birth"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JLabel" name="lblPasswordSignUp">
+                  <Properties>
+                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                      <Font name="SansSerif" size="18" style="0"/>
+                    </Property>
+                    <Property name="labelFor" type="java.awt.Component" editor="org.netbeans.modules.form.ComponentChooserEditor">
+                      <ComponentRef name="txtPasswordSignUp"/>
+                    </Property>
+                    <Property name="text" type="java.lang.String" value="Password"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JPasswordField" name="txtPasswordSignUp">
                   <Properties>
                     <Property name="toolTipText" type="java.lang.String" value="Enter Password"/>
                     <Property name="nextFocusableComponent" type="java.awt.Component" editor="org.netbeans.modules.form.ComponentChooserEditor">
-                      <ComponentRef name="RepeatedPasswordField"/>
+                      <ComponentRef name="txtConfirmPasswordSignUp"/>
                     </Property>
                   </Properties>
                   <Events>
-                    <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="PasswordFieldRegPNLMouseClicked"/>
-                    <EventHandler event="inputMethodTextChanged" listener="java.awt.event.InputMethodListener" parameters="java.awt.event.InputMethodEvent" handler="PasswordFieldRegPNLInputMethodTextChanged"/>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="PasswordFieldRegPNLActionPerformed"/>
-                    <EventHandler event="propertyChange" listener="java.beans.PropertyChangeListener" parameters="java.beans.PropertyChangeEvent" handler="PasswordFieldRegPNLPropertyChange"/>
-                    <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="PasswordFieldRegPNLKeyPressed"/>
-                    <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="PasswordFieldRegPNLKeyTyped"/>
+                    <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="txtPasswordSignUpMouseClicked"/>
+                    <EventHandler event="inputMethodTextChanged" listener="java.awt.event.InputMethodListener" parameters="java.awt.event.InputMethodEvent" handler="txtPasswordSignUpInputMethodTextChanged"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtPasswordSignUpActionPerformed"/>
+                    <EventHandler event="propertyChange" listener="java.beans.PropertyChangeListener" parameters="java.beans.PropertyChangeEvent" handler="txtPasswordSignUpPropertyChange"/>
+                    <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtPasswordSignUpKeyPressed"/>
+                    <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtPasswordSignUpKeyTyped"/>
                   </Events>
                 </Component>
-                <Component class="javax.swing.JButton" name="SignUpButtonRegPNL">
+                <Component class="javax.swing.JLabel" name="lblPasswordStrengthSignUp">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                      <Font name="SansSerif" size="15" style="1"/>
+                      <Font name="Segoe UI" size="12" style="0"/>
                     </Property>
-                    <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                      <Image iconType="3" name="/ASSETS/icons8-add-user-male-24.png"/>
+                    <Property name="labelFor" type="java.awt.Component" editor="org.netbeans.modules.form.ComponentChooserEditor">
+                      <ComponentRef name="pbarPasswordStrengthSignUp"/>
                     </Property>
-                    <Property name="text" type="java.lang.String" value="Sign up"/>
-                    <Property name="toolTipText" type="java.lang.String" value="Click To Sign up"/>
+                    <Property name="text" type="java.lang.String" value="Password Strength"/>
                   </Properties>
-                  <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="SignUpButtonRegPNLActionPerformed"/>
-                  </Events>
                 </Component>
-                <Component class="javax.swing.JLabel" name="ErrorTextRegPNL">
+                <Component class="javax.swing.JProgressBar" name="pbarPasswordStrengthSignUp">
+                </Component>
+                <Component class="javax.swing.JLabel" name="lblConfirmPasswordSignUp">
+                  <Properties>
+                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                      <Font name="SansSerif" size="18" style="0"/>
+                    </Property>
+                    <Property name="labelFor" type="java.awt.Component" editor="org.netbeans.modules.form.ComponentChooserEditor">
+                      <ComponentRef name="txtConfirmPasswordSignUp"/>
+                    </Property>
+                    <Property name="text" type="java.lang.String" value="Confirm Password"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JPasswordField" name="txtConfirmPasswordSignUp">
+                  <Properties>
+                    <Property name="toolTipText" type="java.lang.String" value="Renter Password"/>
+                    <Property name="nextFocusableComponent" type="java.awt.Component" editor="org.netbeans.modules.form.ComponentChooserEditor">
+                      <ComponentRef name="btnSignUpSignUp"/>
+                    </Property>
+                    <Property name="opaque" type="boolean" value="false"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JLabel" name="lblErrorSignUp">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Segoe UI" size="18" style="0"/>
@@ -510,61 +516,38 @@
                     <Property name="focusable" type="boolean" value="false"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JButton" name="LoginInsteadButtonRegPNL">
+                <Component class="javax.swing.JButton" name="btnSignUpInsteadSignUp">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="SansSerif" size="15" style="1"/>
                     </Property>
-                    <Property name="text" type="java.lang.String" value="Login Instead"/>
+                    <Property name="text" type="java.lang.String" value="Sign Up Instead"/>
                     <Property name="toolTipText" type="java.lang.String" value="Click to switch to Login"/>
                   </Properties>
                   <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="LoginInsteadButtonRegPNLActionPerformed"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnSignUpInsteadSignUpActionPerformed"/>
                   </Events>
                 </Component>
-                <Component class="javax.swing.JLabel" name="UsernameText8">
+                <Component class="javax.swing.JButton" name="btnSignUpSignUp">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                      <Font name="SansSerif" size="18" style="0"/>
+                      <Font name="SansSerif" size="15" style="1"/>
                     </Property>
-                    <Property name="labelFor" type="java.awt.Component" editor="org.netbeans.modules.form.ComponentChooserEditor">
-                      <ComponentRef name="RepeatedPasswordField"/>
+                    <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                      <Image iconType="3" name="/ASSETS/icons8-add-user-male-24.png"/>
                     </Property>
-                    <Property name="text" type="java.lang.String" value="Confirm Password"/>
+                    <Property name="text" type="java.lang.String" value="Sign up"/>
+                    <Property name="toolTipText" type="java.lang.String" value="Click To Sign up"/>
                   </Properties>
-                </Component>
-                <Component class="javax.swing.JPasswordField" name="RepeatedPasswordField">
-                  <Properties>
-                    <Property name="toolTipText" type="java.lang.String" value="Renter Password"/>
-                    <Property name="nextFocusableComponent" type="java.awt.Component" editor="org.netbeans.modules.form.ComponentChooserEditor">
-                      <ComponentRef name="SignUpButtonRegPNL"/>
-                    </Property>
-                    <Property name="opaque" type="boolean" value="false"/>
-                  </Properties>
-                </Component>
-                <Component class="javax.swing.JProgressBar" name="PasswordStrength">
-                </Component>
-                <Component class="javax.swing.JLabel" name="PassStrengthText">
-                  <Properties>
-                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                      <Font name="Segoe UI" size="12" style="0"/>
-                    </Property>
-                    <Property name="labelFor" type="java.awt.Component" editor="org.netbeans.modules.form.ComponentChooserEditor">
-                      <ComponentRef name="PasswordStrength"/>
-                    </Property>
-                    <Property name="text" type="java.lang.String" value="Password Strength"/>
-                  </Properties>
-                </Component>
-                <Component class="org.jdesktop.swingx.JXDatePicker" name="DOBPicker">
-                  <Properties>
-                    <Property name="toolTipText" type="java.lang.String" value="Enter Date of Birth"/>
-                  </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnSignUpSignUpActionPerformed"/>
+                  </Events>
                 </Component>
               </SubComponents>
             </Container>
           </SubComponents>
         </Container>
-        <Container class="javax.swing.JPanel" name="LoginPanel">
+        <Container class="javax.swing.JPanel" name="pnlSignIn">
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignCardLayout" value="org.netbeans.modules.form.compat2.layouts.DesignCardLayout$CardConstraintsDescription">
               <CardConstraints cardName="LoginPanel"/>
@@ -576,7 +559,7 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="1" attributes="0">
                       <EmptySpace pref="243" max="32767" attributes="0"/>
-                      <Component id="LogPNL" min="-2" max="-2" attributes="0"/>
+                      <Component id="pnlSignInContainer" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="230" max="-2" attributes="0"/>
                   </Group>
               </Group>
@@ -585,14 +568,14 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="122" max="-2" attributes="0"/>
-                      <Component id="LogPNL" min="-2" pref="275" max="-2" attributes="0"/>
-                      <EmptySpace pref="181" max="32767" attributes="0"/>
+                      <Component id="pnlSignInContainer" min="-2" pref="275" max="-2" attributes="0"/>
+                      <EmptySpace pref="212" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
           </Layout>
           <SubComponents>
-            <Container class="javax.swing.JPanel" name="LogPNL">
+            <Container class="javax.swing.JPanel" name="pnlSignInContainer">
               <Properties>
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                   <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
@@ -654,21 +637,6 @@
                 </DimensionLayout>
               </Layout>
               <SubComponents>
-                <Component class="javax.swing.JButton" name="SignInButtonLogPNL">
-                  <Properties>
-                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                      <Font name="SansSerif" size="15" style="1"/>
-                    </Property>
-                    <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                      <Image iconType="3" name="/ASSETS/icons8-login-rounded-26.png"/>
-                    </Property>
-                    <Property name="text" type="java.lang.String" value="Sign in"/>
-                    <Property name="toolTipText" type="java.lang.String" value="Click To Sign in"/>
-                  </Properties>
-                  <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="SignInButtonLogPNLActionPerformed"/>
-                  </Events>
-                </Component>
                 <Component class="javax.swing.JLabel" name="UsernameText">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
@@ -689,6 +657,21 @@
                     </Property>
                     <Property name="text" type="java.lang.String" value="Password"/>
                   </Properties>
+                </Component>
+                <Component class="javax.swing.JButton" name="SignInButtonLogPNL">
+                  <Properties>
+                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                      <Font name="SansSerif" size="15" style="1"/>
+                    </Property>
+                    <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                      <Image iconType="3" name="/ASSETS/icons8-login-rounded-26.png"/>
+                    </Property>
+                    <Property name="text" type="java.lang.String" value="Sign in"/>
+                    <Property name="toolTipText" type="java.lang.String" value="Click To Sign in"/>
+                  </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="SignInButtonLogPNLActionPerformed"/>
+                  </Events>
                 </Component>
                 <Component class="javax.swing.JPasswordField" name="PasswordField">
                   <Properties>
@@ -718,7 +701,7 @@
             </Container>
           </SubComponents>
         </Container>
-        <Container class="javax.swing.JPanel" name="ProjectView">
+        <Container class="javax.swing.JPanel" name="pnlProjectView">
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignCardLayout" value="org.netbeans.modules.form.compat2.layouts.DesignCardLayout$CardConstraintsDescription">
               <CardConstraints cardName="ProjectView"/>
@@ -767,7 +750,7 @@
                     <DimensionLayout dim="1">
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="1" attributes="0">
-                              <EmptySpace min="0" pref="484" max="32767" attributes="0"/>
+                              <EmptySpace min="0" pref="512" max="32767" attributes="0"/>
                               <Component id="AccountPanel" min="-2" max="-2" attributes="0"/>
                           </Group>
                       </Group>
@@ -908,7 +891,7 @@
                               <Group type="102" alignment="0" attributes="0">
                                   <Component id="ProjectViewToolBarPV" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="ProjectScrollViewPV" pref="523" max="32767" attributes="0"/>
+                                  <Component id="ProjectScrollViewPV" max="32767" attributes="0"/>
                               </Group>
                           </Group>
                         </DimensionLayout>
@@ -984,7 +967,7 @@
                                 </DimensionLayout>
                                 <DimensionLayout dim="1">
                                   <Group type="103" groupAlignment="0" attributes="0">
-                                      <EmptySpace min="0" pref="523" max="32767" attributes="0"/>
+                                      <EmptySpace min="0" pref="545" max="32767" attributes="0"/>
                                   </Group>
                                 </DimensionLayout>
                               </Layout>
@@ -1017,7 +1000,7 @@
                                   <Component id="ToolBarNPPV" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace min="-2" pref="50" max="-2" attributes="0"/>
                                   <Component id="NewProjectDetailsPV" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace pref="93" max="32767" attributes="0"/>
+                                  <EmptySpace pref="112" max="32767" attributes="0"/>
                               </Group>
                           </Group>
                         </DimensionLayout>
@@ -1193,7 +1176,7 @@
                         </DimensionLayout>
                         <DimensionLayout dim="1">
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <EmptySpace min="0" pref="578" max="32767" attributes="0"/>
+                              <EmptySpace min="0" pref="607" max="32767" attributes="0"/>
                           </Group>
                         </DimensionLayout>
                       </Layout>
@@ -1292,7 +1275,7 @@
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Group type="102" alignment="1" attributes="0">
                                       <EmptySpace min="-2" pref="420" max="-2" attributes="0"/>
-                                      <Component id="DeleteAccountButton" pref="40" max="32767" attributes="0"/>
+                                      <Component id="DeleteAccountButton" pref="65" max="32767" attributes="0"/>
                                       <EmptySpace min="-2" pref="64" max="-2" attributes="0"/>
                                   </Group>
                               </Group>

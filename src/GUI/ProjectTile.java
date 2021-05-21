@@ -14,6 +14,7 @@ import java.awt.Color;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+import javax.swing.JPanel;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
 
@@ -23,26 +24,30 @@ import javax.swing.UnsupportedLookAndFeelException;
  */
 public class ProjectTile extends javax.swing.JPanel {
 
-	private Project project;
-	private CardLayout cardLayout;
+    private Project project;
+    private CardLayout cardLayout;
+    private CardLayout mainCardLayout;
+    private JPanel mainPanel;
 
-	public ProjectTile(Project project) {
+    public ProjectTile(Project project, CardLayout mainCardLayout, JPanel mainPanel) {
 
-		initComponents();
+        initComponents();
 
-		this.project = project;
+        this.project = project;
 
-		cardLayout = (CardLayout) this.pnlMain.getLayout();
+        this.mainPanel = mainPanel;
+        this.mainCardLayout = mainCardLayout;
+        cardLayout = (CardLayout) this.pnlMain.getLayout();
 
-		txtaProjectDescriptionTile.setBorder(null);
-		txtaProjectDescriptionTile.setBackground(null);
-		Color backColor = new Color(UIManager.getColor("RootPane.background").getRGB());
-		txtaProjectDescriptionTile.setBackground(backColor);
-		lblProjectTitleTile.setText(project.getProjectTitle());
-		txtaProjectDescriptionTile.setText(project.getProjectDescription());
-	}
+        txtaProjectDescriptionTile.setBorder(null);
+        txtaProjectDescriptionTile.setBackground(null);
+        Color backColor = new Color(UIManager.getColor("RootPane.background").getRGB());
+        txtaProjectDescriptionTile.setBackground(backColor);
+        lblProjectTitleTile.setText(project.getProjectTitle());
+        txtaProjectDescriptionTile.setText(project.getProjectDescription());
+    }
 
-	@SuppressWarnings("unchecked")
+    @SuppressWarnings("unchecked")
   // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
   private void initComponents() {
 
@@ -186,13 +191,10 @@ public class ProjectTile extends javax.swing.JPanel {
   }//GEN-LAST:event_btnOpenActionPerformed
 
   private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
-		ProjectManager projectManager = new ProjectManager();
-		projectManager.DeleteProject(project);
+        ProjectManager projectManager = new ProjectManager();
+        projectManager.DeleteProject(project);
 
-		CardLayout cardLayout = (CardLayout) MainForm.CardPV.getLayout();
-		cardLayout.show(MainForm.CardPV, "ProjectViewPV");
-
-		JOptionPane.showMessageDialog(MainForm.CardPV, "Project Deleted");
+        JOptionPane.showMessageDialog(MainForm.CardPV, "Project Deleted");
   }//GEN-LAST:event_btnDeleteActionPerformed
 
   private void btnSaveEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveEditActionPerformed
