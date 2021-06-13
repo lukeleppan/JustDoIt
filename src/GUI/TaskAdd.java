@@ -6,6 +6,7 @@
 package GUI;
 
 import DATA.Project;
+import MANAGER.TaskManager;
 import javax.swing.JFrame;
 
 /**
@@ -59,6 +60,11 @@ public class TaskAdd extends javax.swing.JFrame {
 
         btnAdd.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
         btnAdd.setText("Add");
+        btnAdd.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAddActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout pnlAddTaskWrapperLayout = new javax.swing.GroupLayout(pnlAddTaskWrapper);
         pnlAddTaskWrapper.setLayout(pnlAddTaskWrapperLayout);
@@ -112,6 +118,10 @@ public class TaskAdd extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddActionPerformed
+        TaskManager taskManager = new TaskManager();
+    }//GEN-LAST:event_btnAddActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAdd;
