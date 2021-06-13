@@ -187,14 +187,15 @@ public class ProjectTile extends javax.swing.JPanel {
   }// </editor-fold>//GEN-END:initComponents
 
   private void btnOpenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOpenActionPerformed
-
+        ProjectView projectView = new ProjectView(this.project);
+        projectView.setVisible(true);
   }//GEN-LAST:event_btnOpenActionPerformed
 
   private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
         ProjectManager projectManager = new ProjectManager();
         projectManager.DeleteProject(project);
 
-        JOptionPane.showMessageDialog(MainForm.CardPV, "Project Deleted");
+        JOptionPane.showMessageDialog(MainForm.pnlCardPV, "Project Deleted");
   }//GEN-LAST:event_btnDeleteActionPerformed
 
   private void btnSaveEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveEditActionPerformed

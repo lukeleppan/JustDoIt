@@ -701,7 +701,7 @@
             </Container>
           </SubComponents>
         </Container>
-        <Container class="javax.swing.JPanel" name="pnlProjectView">
+        <Container class="javax.swing.JPanel" name="pnlProjectList">
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignCardLayout" value="org.netbeans.modules.form.compat2.layouts.DesignCardLayout$CardConstraintsDescription">
               <CardConstraints cardName="ProjectView"/>
@@ -711,24 +711,24 @@
           <Layout>
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="MainSplit" alignment="1" pref="829" max="32767" attributes="0"/>
+                  <Component id="pnlMainSplit" alignment="1" pref="829" max="32767" attributes="0"/>
               </Group>
             </DimensionLayout>
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="MainSplit" alignment="1" max="32767" attributes="0"/>
+                  <Component id="pnlMainSplit" alignment="1" max="32767" attributes="0"/>
               </Group>
             </DimensionLayout>
           </Layout>
           <SubComponents>
-            <Container class="javax.swing.JSplitPane" name="MainSplit">
+            <Container class="javax.swing.JSplitPane" name="pnlMainSplit">
               <Properties>
                 <Property name="dividerSize" type="int" value="2"/>
               </Properties>
 
               <Layout class="org.netbeans.modules.form.compat2.layouts.support.JSplitPaneSupportLayout"/>
               <SubComponents>
-                <Container class="javax.swing.JPanel" name="SidePane">
+                <Container class="javax.swing.JPanel" name="pnlSidePane">
                   <Properties>
                     <Property name="enabled" type="boolean" value="false"/>
                     <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
@@ -838,7 +838,7 @@
                     </Container>
                   </SubComponents>
                 </Container>
-                <Container class="javax.swing.JPanel" name="CardPV">
+                <Container class="javax.swing.JPanel" name="pnlCardPV">
                   <Properties>
                     <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                       <Dimension value="[670, 578]"/>
