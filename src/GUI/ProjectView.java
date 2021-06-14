@@ -6,6 +6,15 @@
 package GUI;
 
 import DATA.Project;
+import DATA.Task;
+import MANAGER.HashPassword;
+import MANAGER.TaskManager;
+import java.awt.Dimension;
+import java.security.NoSuchAlgorithmException;
+import java.security.spec.InvalidKeySpecException;
+import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JFrame;
 
 public class ProjectView extends javax.swing.JFrame {
@@ -18,6 +27,56 @@ public class ProjectView extends javax.swing.JFrame {
         this.setLocationRelativeTo(null);
         this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         this.project = project;
+        refreshTaskList();
+    }
+
+    private void refreshTaskList() {
+        pnlScrollWrapper.getVerticalScrollBar().setUnitIncrement(16);
+
+        TaskManager taskManager = new TaskManager();
+        List<Task> TODOTasks = taskManager.GetProjectTask(project, "TODO");
+        List<Task> DoingTasks = taskManager.GetProjectTask(project, "Doing");
+        List<Task> DoneTasks = taskManager.GetProjectTask(project, "Done");
+
+        for (int i = 0; i < pnlTODOList.getComponentCount(); i++) {
+            if (i > 0) {
+                pnlTODOList.remove(i);
+            }
+        }
+        pnlTODOList.invalidate();
+        pnlTODOList.validate();
+        pnlTODOList.repaint();
+        Dimension preferredSizeTODO = new Dimension(242, 65 * TODOTasks.size() + 20);
+        pnlTODOList.setPreferredSize(preferredSizeTODO);
+        for (int i = 0; i < TODOTasks.size(); i++) {
+            Task task = TODOTasks.get(i);
+            TaskTile tile = new TaskTile(task);
+
+            tile.setSize(220, 60);
+            tile.setLocation(10, 100 + 70 * i);
+            tile.setVisible(true);
+
+            pnlTODOList.add(tile);
+        }
+
+        for (int i = 0; i < pnlDoingList.getComponentCount(); i++) {
+            if (i > 0) {
+                pnlDoingList.remove(i);
+            }
+        }
+        pnlDoingList.invalidate();
+        pnlDoingList.validate();
+        pnlDoingList.repaint();
+
+        for (int i = 0; i < pnlDoneList.getComponentCount(); i++) {
+            if (i > 0) {
+                pnlDoneList.remove(i);
+            }
+        }
+        pnlDoneList.invalidate();
+        pnlDoneList.validate();
+        pnlDoneList.repaint();
+
     }
 
     @SuppressWarnings("unchecked")
