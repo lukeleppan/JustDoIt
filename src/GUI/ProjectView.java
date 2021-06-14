@@ -7,14 +7,10 @@ package GUI;
 
 import DATA.Project;
 import DATA.Task;
-import MANAGER.HashPassword;
 import MANAGER.TaskManager;
+import java.awt.Color;
 import java.awt.Dimension;
-import java.security.NoSuchAlgorithmException;
-import java.security.spec.InvalidKeySpecException;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JFrame;
 
 public class ProjectView extends javax.swing.JFrame {
@@ -38,6 +34,7 @@ public class ProjectView extends javax.swing.JFrame {
         List<Task> DoingTasks = taskManager.GetProjectTask(project, "Doing");
         List<Task> DoneTasks = taskManager.GetProjectTask(project, "Done");
 
+        // TODO List Stuff
         for (int i = 0; i < pnlTODOList.getComponentCount(); i++) {
             if (i > 0) {
                 pnlTODOList.remove(i);
@@ -46,18 +43,23 @@ public class ProjectView extends javax.swing.JFrame {
         pnlTODOList.invalidate();
         pnlTODOList.validate();
         pnlTODOList.repaint();
-        Dimension preferredSizeTODO = new Dimension(242, 65 * TODOTasks.size() + 20);
+        Dimension preferredSizeTODO = new Dimension(242, (70 * TODOTasks.size()) + 50);
         pnlTODOList.setPreferredSize(preferredSizeTODO);
         for (int i = 0; i < TODOTasks.size(); i++) {
             Task task = TODOTasks.get(i);
             TaskTile tile = new TaskTile(task);
 
             tile.setSize(220, 60);
-            tile.setLocation(10, 100 + 70 * i);
+            tile.setLocation(10, 50 + 70 * i);
             tile.setVisible(true);
+            tile.setBackground(new Color(240, 240, 240));
 
             pnlTODOList.add(tile);
         }
+        pnlTODOList.invalidate();
+        pnlTODOList.validate();
+        pnlTODOList.repaint();
+        // ----------------------------------------------------------------
 
         for (int i = 0; i < pnlDoingList.getComponentCount(); i++) {
             if (i > 0) {
@@ -67,6 +69,8 @@ public class ProjectView extends javax.swing.JFrame {
         pnlDoingList.invalidate();
         pnlDoingList.validate();
         pnlDoingList.repaint();
+        Dimension preferredSizeDoing = new Dimension(242, (70 * DoingTasks.size()) + 50);
+        pnlTODOList.setPreferredSize(preferredSizeDoing);
 
         for (int i = 0; i < pnlDoneList.getComponentCount(); i++) {
             if (i > 0) {
@@ -85,6 +89,7 @@ public class ProjectView extends javax.swing.JFrame {
 
         pnlBarWrapper = new javax.swing.JPanel();
         btnAddTask = new javax.swing.JButton();
+        btnRefreshTaskList = new javax.swing.JButton();
         pnlScrollWrapper = new javax.swing.JScrollPane();
         pnlProjectViewWrapper = new javax.swing.JPanel();
         pnlTODOList = new javax.swing.JPanel();
@@ -102,10 +107,20 @@ public class ProjectView extends javax.swing.JFrame {
         setResizable(false);
 
         btnAddTask.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        btnAddTask.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ASSETS/icons8-plus-20.png"))); // NOI18N
         btnAddTask.setText("Add a Task");
         btnAddTask.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAddTaskActionPerformed(evt);
+            }
+        });
+
+        btnRefreshTaskList.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        btnRefreshTaskList.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ASSETS/icons8-process-20 (1).png"))); // NOI18N
+        btnRefreshTaskList.setText("Refresh");
+        btnRefreshTaskList.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRefreshTaskListActionPerformed(evt);
             }
         });
 
@@ -114,7 +129,9 @@ public class ProjectView extends javax.swing.JFrame {
         pnlBarWrapperLayout.setHorizontalGroup(
             pnlBarWrapperLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlBarWrapperLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap()
+                .addComponent(btnRefreshTaskList, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(btnAddTask, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -122,7 +139,10 @@ public class ProjectView extends javax.swing.JFrame {
             pnlBarWrapperLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlBarWrapperLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(btnAddTask, javax.swing.GroupLayout.DEFAULT_SIZE, 31, Short.MAX_VALUE))
+                .addGroup(pnlBarWrapperLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnAddTask, javax.swing.GroupLayout.DEFAULT_SIZE, 31, Short.MAX_VALUE)
+                    .addComponent(btnRefreshTaskList, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
 
         pnlTODOList.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(100, 100, 100), 1, true));
@@ -280,7 +300,7 @@ public class ProjectView extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addComponent(pnlBarWrapper, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(pnlScrollWrapper, javax.swing.GroupLayout.DEFAULT_SIZE, 562, Short.MAX_VALUE))
+                .addComponent(pnlScrollWrapper, javax.swing.GroupLayout.DEFAULT_SIZE, 551, Short.MAX_VALUE))
         );
 
         pack();
@@ -291,8 +311,13 @@ public class ProjectView extends javax.swing.JFrame {
         taskAdd.setVisible(true);
     }//GEN-LAST:event_btnAddTaskActionPerformed
 
+    private void btnRefreshTaskListActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRefreshTaskListActionPerformed
+        refreshTaskList();
+    }//GEN-LAST:event_btnRefreshTaskListActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAddTask;
+    private javax.swing.JButton btnRefreshTaskList;
     private javax.swing.JLabel lblDoing;
     private javax.swing.JLabel lblDone;
     private javax.swing.JLabel lblTODO;
