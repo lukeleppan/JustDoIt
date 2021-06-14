@@ -15,12 +15,12 @@ public class TaskManager {
 
     private DBConnection DBCon = new DBConnection();
 
-    private boolean CreateTask(int projectID, String title, String description) {
+    public boolean CreateTask(int projectID, String title, String description) {
         boolean success = false;
 
         try {
             if (DBCon.update(
-                    "INSERT INTO tblProjects (projectID, taskTitle, taskDescription, taskState) "
+                    "INSERT INTO tblTasks (projectID, taskTitle, taskDescription, taskState) "
                     + "VALUES ("
                     + projectID + ", '"
                     + title + "', '"
